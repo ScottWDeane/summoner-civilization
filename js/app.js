@@ -8,6 +8,8 @@ var blood = 0;
 var bloodCap = 10;
 var corpses = 0;
 var corpseCap = 10;
+var skeletons = 0;
+var skeletonsCap = 5;
 
 // var save = {
 //     cookies: cookies,
@@ -42,7 +44,16 @@ function collectCorpses(number){
     }
 };
 
+function summonSkeleton() {
+    var skeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
+    if (bones >= skeletonCost) {
+        skeletons = skeletons + 1;
+        bones = bones - skeletonCost;
+        document.getElementById('skeletons').innerHTML = skeletons;
+        document.getElementById('bones').innerHTML = bones;
     };
+    var nextSkeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
+    document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
 }
 
 // function save() {
