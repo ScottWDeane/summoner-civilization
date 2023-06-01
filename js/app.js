@@ -1,9 +1,13 @@
 var cookies = 0;
 var cursors = 0;
 var soulEnergy = 0;
+var soulCap = 100;
 var bones = 0;
+var bonesCap = 100;
 var blood = 0;
+var bloodCap = 100;
 var corpses = 0;
+var corpseCap = 100;
 var skeletons = 0;
 var skeletonsCap = 5;
 
