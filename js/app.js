@@ -36,7 +36,61 @@ function loadSavedGame() {
 // at page load: load saved game if it exists
 loadSavedGame();
 
-function collectEnergy(number){
+function resetManualGather() {
+    isGatheringSouls = false;
+    if (soulEnergy < soulCap) {
+        document.getElementById("gatherSoulEnergyButton").innerHTML = gatherSoulEnergyOriginalText;
+    };
+    isGatheringBones = false;
+    if (soulEnergy < soulCap) {
+        document.getElementById("gatherBonesButton").innerHTML = gatherBonesOriginalText;
+    };
+    isGatheringBlood = false;
+    if (soulEnergy < soulCap) {
+        document.getElementById("gatherBloodButton").innerHTML = gatherBloodOriginalText;
+    };
+    isGatheringCorpses = false;
+    if (soulEnergy < soulCap) {
+        document.getElementById("gatherCorpsesButton").innerHTML = gatherCorpsesOriginalText;
+    };
+};
+
+function setGatherResource(currentResource) {
+    resetManualGather();
+    if (currentResource == "soulEnergy") {
+        isGatheringSouls = true;
+        document.getElementById("gatherSoulEnergyButton").innerHTML = "Gathering...";
+    };
+    if (currentResource == "bones") {
+        isGatheringBones = true;
+        document.getElementById("gatherBonesButton").innerHTML = "Gathering...";
+    };
+    if (currentResource == "blood") {
+        isGatheringBlood = true;
+        document.getElementById("gatherBloodButton").innerHTML = "Gathering...";
+    };
+    if (currentResource == "corpses") {
+        isGatheringCorpses = true;
+        document.getElementById("gatherCorpsesButton").innerHTML = "Gathering...";
+    };
+};
+
+function collectCurrentManualResource() {
+    if (isGatheringSouls) {
+        collectSoulEnergy(1);
+    };
+    if (isGatheringBones) {
+        collectBones(1);
+    };
+    if (isGatheringBlood) {
+        collectBlood(1);
+    };
+    if (isGatheringCorpses) {
+        collectCorpses(1);
+    };
+};
+
+function collectSoulEnergy(number){
     if (soulEnergy < soulCap) {
         soulEnergy = soulEnergy + number;
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
@@ -132,5 +186,7 @@ function resetGame() {
 
 // main game loop
 window.setInterval(function(){
+    // gather whatever resource we have set to manual gathering
+    collectCurrentManualResource();
 
 }, 1000);
