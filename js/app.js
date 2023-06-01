@@ -41,7 +41,9 @@ function collectEnergy(number){
         soulEnergy = soulEnergy + number;
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("soulCap").innerHTML = soulCap;
-    }
+    } else if (soulEnergy = soulCap) {
+        document.getElementById("gatherSoulEnergyButton").innerHTML = "Soul Energy full.";
+    };
 };
 
 function collectBones(number){
@@ -49,7 +51,9 @@ function collectBones(number){
         bones = bones + number;
         document.getElementById("bones").innerHTML = bones;
         document.getElementById("bonesCap").innerHTML = bonesCap;
-    }
+    } else if (bones = bonesCap) {
+        document.getElementById("gatherBonesButton").innerHTML = "Bones full.";
+    };
 };
 
 function collectBlood(number){
@@ -57,7 +61,9 @@ function collectBlood(number){
         blood = blood + number;
         document.getElementById("blood").innerHTML = blood;
         document.getElementById("bloodCap").innerHTML = bloodCap;
-    }
+    } else if (blood = bloodCap) {
+        document.getElementById("gatherBloodButton").innerHTML = "Blood full.";
+    };
 };
 
 function collectCorpses(number){
@@ -65,7 +71,9 @@ function collectCorpses(number){
         corpses = corpses + number;
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById("corpseCap").innerHTML = corpseCap;
-    }
+    } else if (corpses = corpseCap) {
+        document.getElementById("gatherCorpsesButton").innerHTML = "Corpses full.";
+    };
 };
 
 
