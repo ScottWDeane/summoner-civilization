@@ -9,8 +9,24 @@ var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
 
+function loadSavedGame() {
+    console.log("Loading saved game, if it exists...")
+    var savedGame = JSON.parse(localStorage.getItem("save"));
+    if (typeof savedGame.soulEnergy !== "undefined") soulEnergy = savedGame.soulEnergy;
+    if (typeof savedGame.bones !== "undefined") bones = savedGame.bones;
+    if (typeof savedGame.blood !== "undefined") blood = savedGame.blood;
+    if (typeof savedGame.corpses !== "undefined") corpses = savedGame.corpses;
+    if (typeof savedGame.skeletons !== "undefined") skeletons = savedGame.skeletons;
 
+    document.getElementById("soulEnergy").innerHTML = soulEnergy;
+    document.getElementById("bones").innerHTML = bones;
+    document.getElementById("blood").innerHTML = blood;
+    document.getElementById("corpses").innerHTML = corpses;
+    document.getElementById('skeletons').innerHTML = skeletons;
+}
 
+// at page load: load saved game if it exists
+loadSavedGame();
 
 function collectEnergy(number){
     if (soulEnergy < soulCap) {
@@ -57,6 +73,46 @@ function summonSkeleton() {
     document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
 }
 
+// save game
+function saveGame() {
+    console.log("Saving game...");
+    var save = {
+        bones:bones,
+        soulEnergy:soulEnergy,
+        blood:blood,
+        corpses:corpses,
+        skeletons:skeletons
+    }
+    localStorage.setItem("save",JSON.stringify(save));
+}
+
+function deleteSave() {
+    var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
+    if (doubleCheck) {
+        console.log("Deleting game save...");
+        localStorage.removeItem("save");
+    }
+}
+
+// reset all buildings, summons, prestige, as if game is starting anew.
+function resetGame() {
+    var doubleCheck = confirm("Are you sure you want to reset everything? THIS IS NOT A PRESTIGE. You will be starting over completely from scratch!");
+    if (doubleCheck) {
+        console.log("Resetting game...");
+        localStorage.removeItem("save");
+        bones = 0;
+        soulEnergy = 0;
+        blood = 0;
+        corpses = 0;
+        skeletons = 0;
+        saveGame();
+        document.getElementById("soulEnergy").innerHTML = soulEnergy;
+        document.getElementById("bones").innerHTML = bones;
+        document.getElementById("blood").innerHTML = blood;
+        document.getElementById("corpses").innerHTML = corpses;
+        document.getElementById('skeletons').innerHTML = skeletons;
+    }
+}
 
 // main game loop
 window.setInterval(function(){
