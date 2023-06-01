@@ -8,6 +8,14 @@ var corpses = 0;
 var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
+var gatherSoulEnergyOriginalText = "Gather Soul Energy";
+var gatherBonesOriginalText = "Process a cadaver";
+var gatherBloodOriginalText = "Collect vials of Blood";
+var gatherCorpsesOriginalText = "Pilfer Graveyard";
+var isGatheringSouls = false;
+var isGatheringBones = false;
+var isGatheringBlood = false;
+var isGatheringCorpses = false;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
