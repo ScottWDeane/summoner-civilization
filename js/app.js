@@ -11,6 +11,8 @@ var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
 
+
+
 // var save = {
 //     cookies: cookies,
 //     cursors: cursors
@@ -48,6 +50,7 @@ function collectCorpses(number){
     }
 };
 
+
 function summonSkeleton() {
     var skeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
     if (bones >= skeletonCost) {
@@ -66,5 +69,5 @@ function summonSkeleton() {
 
 // main game loop
 window.setInterval(function(){
-    
+
 }, 1000);
