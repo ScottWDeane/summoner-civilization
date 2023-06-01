@@ -9,10 +9,18 @@
     <script src='js/app.js'></script>
 </head>
 <body>
-    <button onClick="cookieClick(1)">Collect Cookie</button>
-    <br />
-    Current Cookies: <span id="cookies">0</span>
-    <br />
+    Current souls: <span id="soulEnergy">0</span> <button onClick="collectEnergy(1)">Gather Soul Energy</button>
+    <br>
+    Current bones: <span id="bones">0</span> <button onClick="collectBones(1)">Pilfer some Bones</button>
+    <br>
+    Current blood: <span id="blood">0</span> <button onClick="collectBlood(1)">Collect a vial of Blood</button>
+    <br>
+    Current corpses: <span id="corpses">0</span> <button onClick="collectCorpses(1)">Exhume a Corpse</button>
+
+    <br>
+    <br>
+    <br>
+
     <button onClick="buyCursor()">buy cursor</button>
     Current Cursors: <span id="cursors">0</span><br />
     Next Cursor Cost: <span id="cursorCost">10</span>
