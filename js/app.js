@@ -1,13 +1,9 @@
 var cookies = 0;
 var cursors = 0;
 var soulEnergy = 0;
-var soulCap = 10;
 var bones = 0;
-var bonesCap = 10;
 var blood = 0;
-var bloodCap = 10;
 var corpses = 0;
-var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
 
@@ -60,6 +56,7 @@ function summonSkeleton() {
 //     localStorage.setItem("save",JSON.stringify(save));
 // }
 
+// main game loop
 window.setInterval(function(){
-    cookieClick(cursors);
+    
 }, 1000);
