@@ -1,5 +1,3 @@
-var cookies = 0;
-var cursors = 0;
 var soulEnergy = 0;
 var soulCap = 10;
 var bones = 0;
@@ -13,10 +11,6 @@ var skeletonsCap = 5;
 
 
 
-// var save = {
-//     cookies: cookies,
-//     cursors: cursors
-// }
 
 function collectEnergy(number){
     if (soulEnergy < soulCap) {
@@ -63,9 +57,6 @@ function summonSkeleton() {
     document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
 }
 
-// function save() {
-//     localStorage.setItem("save",JSON.stringify(save));
-// }
 
 // main game loop
 window.setInterval(function(){
