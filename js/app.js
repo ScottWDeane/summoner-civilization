@@ -131,17 +131,15 @@ function collectCorpses(number){
 };
 
 function summonSkeleton() {
-    var skeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
-    if (bones >= skeletonCost) {
+    var skeletonCost = calcSummonSkeletonCost(); 
     if (bones >= skeletonCost && skeletons < skeletonsCap) {
         skeletons = skeletons + 1;
         bones = bones - skeletonCost;
         document.getElementById('skeletons').innerHTML = skeletons;
         document.getElementById('bones').innerHTML = bones;
     };
-    var nextSkeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
+    var nextSkeletonCost = calcSummonSkeletonCost(); 
     document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
-}
 
 // save game
 function saveGame() {
@@ -154,7 +152,7 @@ function saveGame() {
         skeletons:skeletons
     }
     localStorage.setItem("save",JSON.stringify(save));
-}
+};
 
 function deleteSave() {
     var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
@@ -162,7 +160,7 @@ function deleteSave() {
         console.log("Deleting game save...");
         localStorage.removeItem("save");
     }
-}
+};
 
 // reset all buildings, summons, prestige, as if game is starting anew.
 function resetGame() {
@@ -182,11 +180,11 @@ function resetGame() {
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById('skeletons').innerHTML = skeletons;
     }
-}
+};
 
-// main game loop
+// main game loop (1000 --> one "tick" a second, 100 --> ten "ticks" a second)
 window.setInterval(function(){
-    // gather whatever resource we have set to manual gathering
+    // gather selected manual resource
     collectCurrentManualResource();
 
-}, 1000);
+    //debug/cheat mode... gather a bunch of resources automatically
