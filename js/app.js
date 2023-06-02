@@ -173,7 +173,7 @@ function resetGame() {
         localStorage.removeItem("save");
         bones = 0;
         soulEnergy = 0;
-        blood = 0;
+        stone = 0;
         corpses = 0;
         skeletons = 0;
         saveGame();
