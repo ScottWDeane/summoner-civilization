@@ -16,6 +16,14 @@ var isGatheringSouls = false;
 var isGatheringBones = false;
 var isGatheringStone = false;
 var isGatheringCorpses = false;
+var skeletonsAssignedToSoulEnergyHarvesting = 0;
+var maxSkeletonsSoulEnergyHarvesting = 1;
+var skeletonsAssignedToBoneHarvesting = 0;
+var maxSkeletonsBoneHarvesting = 1;
+var skeletonsAssignedToStoneHarvesting = 0;
+var maxSkeletonsStoneHarvesting = 1;
+var skeletonsAssignedToCorpseHarvesting = 0;
+var maxSkeletonsCorpseHarvesting = 1;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
