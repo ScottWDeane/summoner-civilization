@@ -141,6 +141,7 @@ function summonSkeleton() {
     };
     var nextSkeletonCost = calcSummonSkeletonCost(); 
     document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
+    document.getElementById('skeletonsCap').innerHTML = skeletonsCap;
 };
 
 function calcSummonSkeletonCost() {
