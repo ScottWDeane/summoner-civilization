@@ -134,6 +134,7 @@ function collectCorpses(number){
 function summonSkeleton() {
     var skeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
     if (bones >= skeletonCost) {
+    if (bones >= skeletonCost && skeletons < skeletonsCap) {
         skeletons = skeletons + 1;
         bones = bones - skeletonCost;
         document.getElementById('skeletons').innerHTML = skeletons;
