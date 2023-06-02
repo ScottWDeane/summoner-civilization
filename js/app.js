@@ -140,6 +140,11 @@ function summonSkeleton() {
     };
     var nextSkeletonCost = calcSummonSkeletonCost(); 
     document.getElementById('nextSkeletonCost').innerHTML = nextSkeletonCost;
+};
+
+function calcSummonSkeletonCost() {
+    return Math.floor(10 * Math.pow(1.5,skeletons));
+};
 
 // save game
 function saveGame() {
