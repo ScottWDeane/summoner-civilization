@@ -32,6 +32,7 @@ function loadSavedGame() {
     document.getElementById("corpses").innerHTML = corpses;
     document.getElementById('skeletons').innerHTML = skeletons;
 }
+};
 
 // at page load: load saved game if it exists
 loadSavedGame();
