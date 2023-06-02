@@ -2,19 +2,19 @@ var soulEnergy = 0;
 var soulCap = 10;
 var bones = 0;
 var bonesCap = 10;
-var blood = 0;
-var bloodCap = 10;
+var stone = 0;
+var stoneCap = 10;
 var corpses = 0;
 var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
 var gatherSoulEnergyOriginalText = "Gather Soul Energy";
 var gatherBonesOriginalText = "Process a cadaver";
-var gatherBloodOriginalText = "Collect vials of Blood";
+var gatherStoneOriginalText = "Collect Stone";
 var gatherCorpsesOriginalText = "Pilfer Graveyard";
 var isGatheringSouls = false;
 var isGatheringBones = false;
-var isGatheringBlood = false;
+var isGatheringStone = false;
 var isGatheringCorpses = false;
 
 function loadSavedGame() {
@@ -22,13 +22,13 @@ function loadSavedGame() {
     var savedGame = JSON.parse(localStorage.getItem("save"));
     if (typeof savedGame.soulEnergy !== "undefined") soulEnergy = savedGame.soulEnergy;
     if (typeof savedGame.bones !== "undefined") bones = savedGame.bones;
-    if (typeof savedGame.blood !== "undefined") blood = savedGame.blood;
+    if (typeof savedGame.stone !== "undefined") stone = savedGame.stone;
     if (typeof savedGame.corpses !== "undefined") corpses = savedGame.corpses;
     if (typeof savedGame.skeletons !== "undefined") skeletons = savedGame.skeletons;
 
     document.getElementById("soulEnergy").innerHTML = soulEnergy;
     document.getElementById("bones").innerHTML = bones;
-    document.getElementById("blood").innerHTML = blood;
+    document.getElementById("stone").innerHTML = stone;
     document.getElementById("corpses").innerHTML = corpses;
     document.getElementById('skeletons').innerHTML = skeletons;
 }
@@ -45,9 +45,9 @@ function resetManualGather() {
     if (soulEnergy < soulCap) {
         document.getElementById("gatherBonesButton").innerHTML = gatherBonesOriginalText;
     };
-    isGatheringBlood = false;
+    isGatheringStone = false;
     if (soulEnergy < soulCap) {
-        document.getElementById("gatherBloodButton").innerHTML = gatherBloodOriginalText;
+        document.getElementById("gatherStoneButton").innerHTML = gatherStoneOriginalText;
     };
     isGatheringCorpses = false;
     if (soulEnergy < soulCap) {
@@ -65,9 +65,9 @@ function setGatherResource(currentResource) {
         isGatheringBones = true;
         document.getElementById("gatherBonesButton").innerHTML = "Gathering...";
     };
-    if (currentResource == "blood") {
-        isGatheringBlood = true;
-        document.getElementById("gatherBloodButton").innerHTML = "Gathering...";
+    if (currentResource == "stone") {
+        isGatheringStone = true;
+        document.getElementById("gatherStoneButton").innerHTML = "Gathering...";
     };
     if (currentResource == "corpses") {
         isGatheringCorpses = true;
@@ -82,8 +82,8 @@ function collectCurrentManualResource() {
     if (isGatheringBones) {
         collectBones(1);
     };
-    if (isGatheringBlood) {
-        collectBlood(1);
+    if (isGatheringStone) {
+        collectStone(1);
     };
     if (isGatheringCorpses) {
         collectCorpses(1);
@@ -110,13 +110,13 @@ function collectBones(number){
     };
 };
 
-function collectBlood(number){
-    if (blood < bloodCap) {
-        blood = blood + number;
-        document.getElementById("blood").innerHTML = blood;
-        document.getElementById("bloodCap").innerHTML = bloodCap;
-    } else if (blood = bloodCap) {
-        document.getElementById("gatherBloodButton").innerHTML = "[BLOOD FULL]";
+function collectStone(number){
+    if (stone < stoneCap) {
+        stone = stone + number;
+        document.getElementById("stone").innerHTML = stone;
+        document.getElementById("stoneCap").innerHTML = stoneCap;
+    } else if (stone = stoneCap) {
+        document.getElementById("gatherStoneButton").innerHTML = "[BLOOD FULL]";
     };
 };
 
@@ -150,7 +150,7 @@ function saveGame() {
     var save = {
         bones:bones,
         soulEnergy:soulEnergy,
-        blood:blood,
+        stone:stone,
         corpses:corpses,
         skeletons:skeletons
     }
@@ -179,7 +179,7 @@ function resetGame() {
         saveGame();
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("bones").innerHTML = bones;
-        document.getElementById("blood").innerHTML = blood;
+        document.getElementById("stone").innerHTML = stone;
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById('skeletons').innerHTML = skeletons;
     }
