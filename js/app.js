@@ -130,7 +130,6 @@ function collectCorpses(number){
     };
 };
 
-
 function summonSkeleton() {
     var skeletonCost = Math.floor(10 * Math.pow(1.5,skeletons)); 
     if (bones >= skeletonCost) {
