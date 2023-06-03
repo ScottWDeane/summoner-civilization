@@ -1,11 +1,11 @@
 var soulEnergy = 0;
-var soulCap = 10;
+var soulCap = 100;
 var bones = 0;
-var bonesCap = 10;
+var bonesCap = 50;
 var stone = 0;
-var stoneCap = 10;
+var stoneCap = 50;
 var corpses = 0;
-var corpseCap = 10;
+var corpseCap = 50;
 var skeletons = 0;
 var skeletonsCap = 5;
 var availableSkeletons = 0;
@@ -40,10 +40,11 @@ function loadSavedGame() {
     document.getElementById("stone").innerHTML = stone;
     document.getElementById("corpses").innerHTML = corpses;
     document.getElementById('skeletons').innerHTML = skeletons;
-}
 };
 
-// at page load: load saved game if it exists
+// *****************************************
+// on page load
+// *****************************************
 loadSavedGame();
 
 function resetManualGather() {
@@ -162,6 +163,9 @@ function summonSkeleton() {
 
 function calcSummonSkeletonCost() {
     return Math.floor(10 * Math.pow(1.5,skeletons));
+    return Math.floor(10 * Math.pow(1.1,skeletons));
+};
+
 // for now, skeletons generate 1 resource a tick per assigned skeleton
 function assignSkeletonToResource(selectedResource) {
     // check if we have any available skeletons
@@ -250,3 +254,7 @@ window.setInterval(function(){
     collectSkeletonLabor();
 
     //debug/cheat mode... gather a bunch of resources automatically
+    // collectSoulEnergy(5);
+    // collectBones(5);
+    // collectStone(5);
+    // collectCorpses(5);
