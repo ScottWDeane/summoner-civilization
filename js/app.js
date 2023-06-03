@@ -257,3 +257,5 @@ window.setInterval(function(){
     // collectBones(5);
     // collectStone(5);
     // collectCorpses(5);
+
+}, 100);
