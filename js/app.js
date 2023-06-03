@@ -156,6 +156,11 @@ function calcSummonSkeletonCost() {
     return Math.floor(10 * Math.pow(1.5,skeletons));
 };
 
+function updateAvailableSkeletons() {
+    availableSkeletons = skeletons - skeletonsAssignedToSoulEnergyHarvesting - skeletonsAssignedToBoneHarvesting - skeletonsAssignedToStoneHarvesting - skeletonsAssignedToCorpseHarvesting;
+    // TODO: add line to update any UI elements that refer to current number of skeletons available to assign labor
+}
+
 // save game
 function saveGame() {
     console.log("Saving game...");
