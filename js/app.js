@@ -100,6 +100,13 @@ function collectCurrentManualResource() {
     };
 };
 
+function collectSkeletonLabor() {
+    collectSoulEnergy(skeletonsAssignedToSoulEnergyHarvesting * 1);
+    collectBones(skeletonsAssignedToBoneHarvesting * 1);
+    collectStone(skeletonsAssignedToStoneHarvesting * 1);
+    collectCorpses(skeletonsAssignedToCorpseHarvesting * 1);
+};
+
 function collectSoulEnergy(number){
     if (soulEnergy < soulCap) {
         soulEnergy = soulEnergy + number;
@@ -239,5 +246,7 @@ function resetGame() {
 window.setInterval(function(){
     // gather selected manual resource
     collectCurrentManualResource();
+    // gather skeleton's labor
+    collectSkeletonLabor();
 
     //debug/cheat mode... gather a bunch of resources automatically
