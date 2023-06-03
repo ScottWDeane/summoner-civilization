@@ -8,6 +8,7 @@ var corpses = 0;
 var corpseCap = 10;
 var skeletons = 0;
 var skeletonsCap = 5;
+var availableSkeletons = 0;
 var gatherSoulEnergyOriginalText = "Gather Soul Energy";
 var gatherBonesOriginalText = "Process a cadaver";
 var gatherStoneOriginalText = "Collect Stone";
