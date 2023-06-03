@@ -185,16 +185,14 @@ function assignSkeletonToResource(selectedResource) {
 
 function removeSkeletonFromResource(selectedResource) {
     updateAvailableSkeletons();
-    if (availableSkeletons >= 1) {
-        if (selectedResource == "soulEnergy") {
-            skeletonsAssignedToSoulEnergyHarvesting -= 1;
-        } else if (selectedResource == "bones") {
-            skeletonsAssignedToBoneHarvesting -= 1;
-        } else if (selectedResource == "stone") {
-            skeletonsAssignedToStoneHarvesting -= 1;
-        } else if (selectedResource == "corpses") {
-            skeletonsAssignedToCorpseHarvesting -= 1;
-        };
+    if (selectedResource == "soulEnergy" && skeletonsAssignedToSoulEnergyHarvesting > 0) {
+        skeletonsAssignedToSoulEnergyHarvesting -= 1;
+    } else if (selectedResource == "bones" && skeletonsAssignedToBoneHarvesting > 0) {
+        skeletonsAssignedToBoneHarvesting -= 1;
+    } else if (selectedResource == "stone" && skeletonsAssignedToStoneHarvesting > 0) {
+        skeletonsAssignedToStoneHarvesting -= 1;
+    } else if (selectedResource == "corpses" && skeletonsAssignedToCorpseHarvesting > 0) {
+        skeletonsAssignedToCorpseHarvesting -= 1;
     };
     updateAvailableSkeletons();
 };
