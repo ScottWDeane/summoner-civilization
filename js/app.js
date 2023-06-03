@@ -162,7 +162,6 @@ function summonSkeleton() {
 };
 
 function calcSummonSkeletonCost() {
-    return Math.floor(10 * Math.pow(1.5,skeletons));
     return Math.floor(10 * Math.pow(1.1,skeletons));
 };
 
