@@ -154,6 +154,38 @@ function summonSkeleton() {
 
 function calcSummonSkeletonCost() {
     return Math.floor(10 * Math.pow(1.5,skeletons));
+// for now, skeletons generate 1 resource a tick per assigned skeleton
+function assignSkeletonToResource(selectedResource) {
+    // check if we have any available skeletons
+    updateAvailableSkeletons();
+    if (availableSkeletons >= 1) {
+        if (selectedResource == "soulEnergy") {
+            skeletonsAssignedToSoulEnergyHarvesting += 1;
+        } else if (selectedResource == "bones") {
+            skeletonsAssignedToBoneHarvesting += 1;
+        } else if (selectedResource == "stone") {
+            skeletonsAssignedToStoneHarvesting += 1;
+        } else if (selectedResource == "corpses") {
+            skeletonsAssignedToCorpseHarvesting += 1;
+        };
+    };
+    updateAvailableSkeletons();
+};
+
+function removeSkeletonFromResource(selectedResource) {
+    updateAvailableSkeletons();
+    if (availableSkeletons >= 1) {
+        if (selectedResource == "soulEnergy") {
+            skeletonsAssignedToSoulEnergyHarvesting -= 1;
+        } else if (selectedResource == "bones") {
+            skeletonsAssignedToBoneHarvesting -= 1;
+        } else if (selectedResource == "stone") {
+            skeletonsAssignedToStoneHarvesting -= 1;
+        } else if (selectedResource == "corpses") {
+            skeletonsAssignedToCorpseHarvesting -= 1;
+        };
+    };
+    updateAvailableSkeletons();
 };
 
 function updateAvailableSkeletons() {
