@@ -102,10 +102,17 @@ function collectCurrentManualResource() {
 };
 
 function collectSkeletonLabor() {
-    collectSoulEnergy(skeletonsAssignedToSoulEnergyHarvesting * 1);
-    collectBones(skeletonsAssignedToBoneHarvesting * 1);
-    collectStone(skeletonsAssignedToStoneHarvesting * 1);
-    collectCorpses(skeletonsAssignedToCorpseHarvesting * 1);
+    skeletonLaborSoulEnergy = skeletonsAssignedToSoulEnergyHarvesting * 1;
+    collectSoulEnergy(skeletonLaborSoulEnergy);
+
+    skeletonLaborBones = skeletonsAssignedToBoneHarvesting * 1;
+    collectBones(skeletonLaborBones);
+
+    skeletonLaborStone = skeletonsAssignedToStoneHarvesting * 1;
+    collectStone(skeletonLaborStone);
+
+    skeletonLaborCorpses = skeletonsAssignedToCorpseHarvesting * 1;
+    collectCorpses(skeletonLaborCorpses);
 };
 
 function collectSoulEnergy(number){
