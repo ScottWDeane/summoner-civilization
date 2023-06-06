@@ -25,6 +25,10 @@ var skeletonsAssignedToStoneHarvesting = 0;
 var maxSkeletonsStoneHarvesting = 1;
 var skeletonsAssignedToCorpseHarvesting = 0;
 var maxSkeletonsCorpseHarvesting = 1;
+var skeletonLaborSoulEnergy;
+var skeletonLaborBones;
+var skeletonLaborStone;
+var skeletonLaborCorpses;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
