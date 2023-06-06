@@ -10,7 +10,7 @@
 </head>
 <body>
     <div>
-        Soul Energy: <span id="soulEnergy">0</span> / <span id="soulCap">100</span>
+        Soul Energy: <span id="soulEnergy">0</span> / <span id="soulCap">100</span> (<span id="soulEnergyCollectionRate">0</span> / s)
         <button id="gatherSoulEnergyButton" onClick="setGatherResource('soulEnergy')">Gather Soul Energy</button> 
         <button id="assignSkeletonToSoulEnergyCollection" onClick="assignSkeletonToResource('soulEnergy')">Assign a Skeleton</button>
         <button id="removeSkeletonFromSoulEnergyHarvesting" onClick="removeSkeletonFromResource('soulEnergy')">Remove a Skeleton</button>
@@ -18,7 +18,7 @@
     </div>
 
     <div>
-        Bones: <span id="bones">0</span> / <span id="bonesCap">10</span> 
+        Bones: <span id="bones">0</span> / <span id="bonesCap">10</span> (<span id="bonesCollectionRate">0</span> / s) 
         <button id="gatherBonesButton" onClick="setGatherResource('bones')">Process a cadaver</button>
         <button id="assignSkeletonToBonesCollection(1)" onClick="assignSkeletonToResource('bones')">Assign a Skeleton</button>
         <button id="removeSkeletonFromBoneHarvesting" onClick="removeSkeletonFromResource('bones')">Remove a Skeleton</button>
@@ -26,7 +26,7 @@
     </div>
 
     <div>
-        Stone: <span id="stone">0</span> / <span id="stoneCap">10</span> 
+        Stone: <span id="stone">0</span> / <span id="stoneCap">10</span> (<span id="stoneCollectionRate">0</span> / s) 
         <button id="gatherStoneButton" onClick="setGatherResource('stone')">Collect Stone</button>
         <button id="assignSkeletonToStoneCollection(1)" onClick="assignSkeletonToResource('stone')">Assign a Skeleton</button>
         <button id="removeSkeletonFromStoneHarvesting" onClick="removeSkeletonFromResource('stone')">Remove a Skeleton</button>
@@ -34,7 +34,7 @@
     </div>
 
     <div>
-        Corpses: <span id="corpses">0</span> / <span id="corpseCap">10</span> 
+        Corpses: <span id="corpses">0</span> / <span id="corpseCap">10</span> (<span id="corpsesCollectionRate">0</span> / s) 
         <button id="gatherCorpsesButton" onClick="setGatherResource('corpses')">Pilfer Graveyard</button>
         <button id="assignSkeletonToCorpsesCollection(1)" onClick="assignSkeletonToResource('corpses')">Assign a Skeleton</button>
         <button id="removeSkeletonFromCorpseHarvesting" onClick="removeSkeletonFromResource('corpses')">Remove a Skeleton</button>
