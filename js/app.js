@@ -172,12 +172,16 @@ function assignSkeletonToResource(selectedResource) {
     if (availableSkeletons >= 1) {
         if (selectedResource == "soulEnergy") {
             skeletonsAssignedToSoulEnergyHarvesting += 1;
+            document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
         } else if (selectedResource == "bones") {
             skeletonsAssignedToBoneHarvesting += 1;
+            document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
         } else if (selectedResource == "stone") {
             skeletonsAssignedToStoneHarvesting += 1;
+            document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
         } else if (selectedResource == "corpses") {
             skeletonsAssignedToCorpseHarvesting += 1;
+            document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
         };
     };
     updateAvailableSkeletons();
@@ -187,12 +191,16 @@ function removeSkeletonFromResource(selectedResource) {
     updateAvailableSkeletons();
     if (selectedResource == "soulEnergy" && skeletonsAssignedToSoulEnergyHarvesting > 0) {
         skeletonsAssignedToSoulEnergyHarvesting -= 1;
+        document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
     } else if (selectedResource == "bones" && skeletonsAssignedToBoneHarvesting > 0) {
         skeletonsAssignedToBoneHarvesting -= 1;
+        document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
     } else if (selectedResource == "stone" && skeletonsAssignedToStoneHarvesting > 0) {
         skeletonsAssignedToStoneHarvesting -= 1;
+        document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
     } else if (selectedResource == "corpses" && skeletonsAssignedToCorpseHarvesting > 0) {
         skeletonsAssignedToCorpseHarvesting -= 1;
+        document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
     };
     updateAvailableSkeletons();
 };
