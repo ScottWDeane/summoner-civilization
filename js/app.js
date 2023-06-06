@@ -38,17 +38,26 @@ var gatherCorpsesOriginalText = "Pilfer Graveyard";
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
     var savedGame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savedGame.soulEnergy !== "undefined") soulEnergy = savedGame.soulEnergy;
-    if (typeof savedGame.bones !== "undefined") bones = savedGame.bones;
-    if (typeof savedGame.stone !== "undefined") stone = savedGame.stone;
-    if (typeof savedGame.corpses !== "undefined") corpses = savedGame.corpses;
-    if (typeof savedGame.skeletons !== "undefined") skeletons = savedGame.skeletons;
-
-    document.getElementById("soulEnergy").innerHTML = soulEnergy;
-    document.getElementById("bones").innerHTML = bones;
-    document.getElementById("stone").innerHTML = stone;
-    document.getElementById("corpses").innerHTML = corpses;
-    document.getElementById('skeletons').innerHTML = skeletons;
+    if (typeof savedGame.soulEnergy !== "undefined") {
+      soulEnergy = savedGame.soulEnergy;
+      document.getElementById("soulEnergy").innerHTML = soulEnergy;
+    };
+    if (typeof savedGame.bones !== "undefined") {
+      bones = savedGame.bones;
+      document.getElementById("bones").innerHTML = bones;
+    };
+    if (typeof savedGame.stone !== "undefined") {
+      stone = savedGame.stone;
+      document.getElementById("stone").innerHTML = stone;
+    };
+    if (typeof savedGame.corpses !== "undefined") {
+      corpses = savedGame.corpses;
+      document.getElementById("corpses").innerHTML = corpses;
+    };
+    if (typeof savedGame.skeletons !== "undefined") {
+      skeletons = savedGame.skeletons;
+      document.getElementById('skeletons').innerHTML = skeletons;
+    };
 };
 
 // *****************************************
