@@ -1,3 +1,4 @@
+// basic resources
 var soulEnergy = 0;
 var soulCap = 100;
 var bones = 0;
@@ -6,17 +7,16 @@ var stone = 0;
 var stoneCap = 50;
 var corpses = 0;
 var corpseCap = 50;
-var skeletons = 0;
-var skeletonsCap = 5;
-var availableSkeletons = 0;
-var gatherSoulEnergyOriginalText = "Gather Soul Energy";
-var gatherBonesOriginalText = "Process a cadaver";
-var gatherStoneOriginalText = "Collect Stone";
-var gatherCorpsesOriginalText = "Pilfer Graveyard";
+// track which resoruce is being manually gathered
 var isGatheringSouls = false;
 var isGatheringBones = false;
 var isGatheringStone = false;
 var isGatheringCorpses = false;
+// basic skeletons tracking
+var skeletons = 0;
+var skeletonsCap = 5;
+var availableSkeletons = 0;
+// tracking skeletons' labor
 var skeletonsAssignedToSoulEnergyHarvesting = 0;
 var maxSkeletonsSoulEnergyHarvesting = 1;
 var skeletonsAssignedToBoneHarvesting = 0;
@@ -29,6 +29,11 @@ var skeletonLaborSoulEnergy;
 var skeletonLaborBones;
 var skeletonLaborStone;
 var skeletonLaborCorpses;
+// misc strings to use for UI
+var gatherSoulEnergyOriginalText = "Gather Soul Energy";
+var gatherBonesOriginalText = "Process a cadaver";
+var gatherStoneOriginalText = "Collect Stone";
+var gatherCorpsesOriginalText = "Pilfer Graveyard";
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
