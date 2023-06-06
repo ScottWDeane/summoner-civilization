@@ -126,6 +126,9 @@ function collectSkeletonLabor() {
 function collectSoulEnergy(number){
     if (soulEnergy < soulCap) {
         soulEnergy = soulEnergy + number;
+        if (soulEnergy > soulCap) {
+          soulEnergy = soulCap;
+        }
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("soulCap").innerHTML = soulCap;
     } else if (soulEnergy = soulCap) {
@@ -136,6 +139,9 @@ function collectSoulEnergy(number){
 function collectBones(number){
     if (bones < bonesCap) {
         bones = bones + number;
+        if (bones > bonesCap) {
+          bones = bonesCap;
+        }
         document.getElementById("bones").innerHTML = bones;
         document.getElementById("bonesCap").innerHTML = bonesCap;
     } else if (bones = bonesCap) {
@@ -146,6 +152,9 @@ function collectBones(number){
 function collectStone(number){
     if (stone < stoneCap) {
         stone = stone + number;
+        if (stone > stoneCap) {
+          stone = stoneCap;
+        }
         document.getElementById("stone").innerHTML = stone;
         document.getElementById("stoneCap").innerHTML = stoneCap;
     } else if (stone = stoneCap) {
@@ -156,6 +165,9 @@ function collectStone(number){
 function collectCorpses(number){
     if (corpses < corpseCap) {
         corpses = corpses + number;
+        if (corpses > corpseCap) {
+          corpses = corpseCap;
+        }
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById("corpseCap").innerHTML = corpseCap;
     } else if (corpses = corpseCap) {
