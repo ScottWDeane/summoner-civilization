@@ -170,16 +170,19 @@ function assignSkeletonToResource(selectedResource) {
     // check if we have any available skeletons
     updateAvailableSkeletons();
     if (availableSkeletons >= 1) {
-        if (selectedResource == "soulEnergy") {
+        if (selectedResource == "soulEnergy" && skeletonsAssignedToSoulEnergyHarvesting < maxSkeletonsSoulEnergyHarvesting) {
             skeletonsAssignedToSoulEnergyHarvesting += 1;
             document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
-        } else if (selectedResource == "bones") {
+        } 
+        else if (selectedResource == "bones" && skeletonsAssignedToBoneHarvesting < maxSkeletonsBoneHarvesting) {
             skeletonsAssignedToBoneHarvesting += 1;
             document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
-        } else if (selectedResource == "stone") {
+        } 
+        else if (selectedResource == "stone" && skeletonsAssignedToStoneHarvesting < maxSkeletonsStoneHarvesting) {
             skeletonsAssignedToStoneHarvesting += 1;
             document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
-        } else if (selectedResource == "corpses") {
+        } 
+        else if (selectedResource == "corpses" && skeletonsAssignedToCorpseHarvesting < maxSkeletonsCorpseHarvesting) {
             skeletonsAssignedToCorpseHarvesting += 1;
             document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
         };
@@ -192,13 +195,16 @@ function removeSkeletonFromResource(selectedResource) {
     if (selectedResource == "soulEnergy" && skeletonsAssignedToSoulEnergyHarvesting > 0) {
         skeletonsAssignedToSoulEnergyHarvesting -= 1;
         document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
-    } else if (selectedResource == "bones" && skeletonsAssignedToBoneHarvesting > 0) {
+    } 
+    else if (selectedResource == "bones" && skeletonsAssignedToBoneHarvesting > 0) {
         skeletonsAssignedToBoneHarvesting -= 1;
         document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
-    } else if (selectedResource == "stone" && skeletonsAssignedToStoneHarvesting > 0) {
+    } 
+    else if (selectedResource == "stone" && skeletonsAssignedToStoneHarvesting > 0) {
         skeletonsAssignedToStoneHarvesting -= 1;
         document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
-    } else if (selectedResource == "corpses" && skeletonsAssignedToCorpseHarvesting > 0) {
+    } 
+    else if (selectedResource == "corpses" && skeletonsAssignedToCorpseHarvesting > 0) {
         skeletonsAssignedToCorpseHarvesting -= 1;
         document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
     };
