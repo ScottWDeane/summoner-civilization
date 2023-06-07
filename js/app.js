@@ -194,7 +194,7 @@ function summonSkeleton() {
     if (bones >= skeletonCost && skeletons < skeletonsCap) {
         skeletons = skeletons + 1;
         bones = bones - skeletonCost;
-        // if we're not otherwise harvesting bones in any way, reset the text
+        // update "gather bones" UI button's display
         if (isGatheringBones == false) {
           document.getElementById("gatherBonesButton").innerHTML = gatherBonesOriginalText;
         }
