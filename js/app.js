@@ -275,7 +275,8 @@ function saveGame() {
         soulEnergy:soulEnergy,
         stone:stone,
         corpses:corpses,
-        skeletons:skeletons
+        skeletons:skeletons,
+        builtCrypts:builtCrypts
     }
     localStorage.setItem("save",JSON.stringify(save));
 };
