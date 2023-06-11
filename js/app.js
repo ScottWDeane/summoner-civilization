@@ -34,6 +34,8 @@ var gatherSoulEnergyOriginalText = "Gather Soul Energy";
 var gatherBonesOriginalText = "Process a cadaver";
 var gatherStoneOriginalText = "Collect Stone";
 var gatherCorpsesOriginalText = "Pilfer Graveyard";
+// basic buildings
+var builtCrypts = 1;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...")
