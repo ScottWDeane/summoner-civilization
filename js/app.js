@@ -191,7 +191,7 @@ function collectCorpses(number){
 
 function summonSkeleton() {
     var skeletonCost = calcSummonSkeletonCost(); 
-    if (bones >= skeletonCost && skeletons < skeletonsCap) {
+    if (bones >= skeletonCost && skeletons <= skeletonsCap) {
         skeletons = skeletons + 1;
         bones = bones - skeletonCost;
         // update "gather bones" UI button's display
