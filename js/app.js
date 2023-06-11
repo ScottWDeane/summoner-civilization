@@ -14,7 +14,7 @@ var isGatheringStone = false;
 var isGatheringCorpses = false;
 // basic skeletons tracking
 var skeletons = 0;
-var skeletonsCap = 5;
+var skeletonsCap = 1;
 var availableSkeletons = 0;
 // tracking skeletons' labor
 var skeletonsAssignedToSoulEnergyHarvesting = 0;
