@@ -270,6 +270,19 @@ function updateAvailableSkeletons() {
     availableSkeletons = skeletons - skeletonsAssignedToSoulEnergyHarvesting - skeletonsAssignedToBoneHarvesting - skeletonsAssignedToStoneHarvesting - skeletonsAssignedToCorpseHarvesting;
 }
 
+function buildCrypt() {
+  var cryptCost = calcBuildCryptCost();
+  if (stone >= cryptCost) {
+    builtCrypts += 1;
+    stone -= cryptCost;
+    document.getElementById('stone').innerHTML = stone;
+    document.getElementById('nextCryptCost').innerHTML = cryptCost;
+    document.getElementById('currentCrypts').innerHTML = builtCrypts;
+    skeletonsCap = calcCryptSkeletonCap();
+    document.getElementById('skeletonsCap').innerHTML = skeletonsCap;
+  }
+}
+
 function calcBuildCryptCost() {
   return Math.floor(10 * Math.pow(1.1,builtCrypts));
 };
