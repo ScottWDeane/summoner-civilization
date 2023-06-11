@@ -61,6 +61,10 @@ function loadSavedGame() {
       skeletons = savedGame.skeletons;
       document.getElementById('skeletons').innerHTML = skeletons;
     };
+    if (typeof savedGame.builtCrypts !== "undefined") {
+        builtCrypts = savedGame.builtCrypts;
+        document.getElementById('currentCrypts').innerHTML = builtCrypts;
+    };
 };
 
 // *****************************************
