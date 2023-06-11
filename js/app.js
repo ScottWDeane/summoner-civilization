@@ -274,6 +274,12 @@ function calcBuildCryptCost() {
   return Math.floor(10 * Math.pow(1.1,builtCrypts));
 };
 
+function calcCryptSkeletonCap() {
+    // placeholder: each crypt increases max skeletons by a flat "1" per crypt.
+    // will later be replaced with more complicated formula related to other game mechanics
+    return builtCrypts * 1;
+}
+
 // save game
 function saveGame() {
     console.log("Saving game...");
