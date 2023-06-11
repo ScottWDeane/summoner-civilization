@@ -300,6 +300,7 @@ function resetGame() {
         stone = 0;
         corpses = 0;
         skeletons = 0;
+        builtCrypts = 1;
         saveGame();
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("bones").innerHTML = bones;
