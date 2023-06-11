@@ -270,6 +270,10 @@ function updateAvailableSkeletons() {
     availableSkeletons = skeletons - skeletonsAssignedToSoulEnergyHarvesting - skeletonsAssignedToBoneHarvesting - skeletonsAssignedToStoneHarvesting - skeletonsAssignedToCorpseHarvesting;
 }
 
+function calcBuildCryptCost() {
+  return Math.floor(10 * Math.pow(1.1,builtCrypts));
+};
+
 // save game
 function saveGame() {
     console.log("Saving game...");
