@@ -38,8 +38,9 @@ var gatherCorpsesOriginalText = "Pilfer Graveyard";
 var builtCrypts = 1;
 
 function loadSavedGame() {
-    console.log("Loading saved game, if it exists...")
+    console.log("Loading saved game, if it exists...");
     var savedGame = JSON.parse(localStorage.getItem("save"));
+
     if (typeof savedGame.soulEnergy !== "undefined") {
       soulEnergy = savedGame.soulEnergy;
       document.getElementById("soulEnergy").innerHTML = soulEnergy;
