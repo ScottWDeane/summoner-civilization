@@ -38,6 +38,7 @@ var gatherCorpsesOriginalText = "Pilfer Graveyard";
 var crypts = 1;
 var ossuaries = 0;
 var rockpiles = 0;
+var openPits = 0;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...");
@@ -74,6 +75,10 @@ function loadSavedGame() {
     if (typeof savedGame.rockpiles !== "undefined") {
         rockpiles = savedGame.rockpiles;
         document.getElementById('currentRockpiles').innerHTML = rockpiles;
+    };
+    if (typeof savedGame.openPits !== "undefined") {
+        openPits = savedGame.openPits;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
     };
 };
 
@@ -324,7 +329,6 @@ function calcOssuaryBonesCap() {
     return 50 + (ossuaries * 50);
 }
 
-
 // rockpiles
 function buildRockpile() {
     var rockpileCost = calcBuildRockpileCost();
@@ -347,6 +351,28 @@ function calcRockpileStonesCap() {
     return 50 + (rockpiles * 50);
 }
 
+// Open Pits
+function buildOpenPit() {
+    var openPitCost = calcBuildOpenPitCost();
+    if (stone >= openPitCost) {
+        openPits += 1;
+        stone -= openPitCost;
+        document.getElementById('stone').innerHTML = stone;
+        document.getElementById('nextOpenPitCost').innerHTML = openPitCost;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
+        corpseCap = calcOpenPitCorpsesCap();
+        document.getElementById('corpseCap').innerHTML = corpseCap;
+    }
+}
+
+function calcBuildOpenPitCost() {
+    return Math.floor(10 * Math.pow(1.1,openPits));
+}
+
+function calcOpenPitCorpsesCap() {
+    return 50 + (openPits * 50);
+}
+
 // save game
 function saveGame() {
     console.log("Saving game...");
@@ -357,7 +383,9 @@ function saveGame() {
         corpses:corpses,
         skeletons:skeletons,
         crypts:crypts,
-        ossuaries:ossuaries
+        ossuaries:ossuaries,
+        rockpiles:rockpiles,
+        openPits:openPits
     }
     localStorage.setItem("save",JSON.stringify(save));
 };
