@@ -35,7 +35,7 @@ var gatherBonesOriginalText = "Process a cadaver";
 var gatherStoneOriginalText = "Collect Stone";
 var gatherCorpsesOriginalText = "Pilfer Graveyard";
 // basic buildings
-var builtCrypts = 1;
+var crypts = 1;
 var ossuaries = 0;
 
 function loadSavedGame() {
@@ -62,9 +62,9 @@ function loadSavedGame() {
       skeletons = savedGame.skeletons;
       document.getElementById('skeletons').innerHTML = skeletons;
     };
-    if (typeof savedGame.builtCrypts !== "undefined") {
-        builtCrypts = savedGame.builtCrypts;
-        document.getElementById('currentCrypts').innerHTML = builtCrypts;
+    if (typeof savedGame.crypts !== "undefined") {
+        crypts = savedGame.crypts;
+        document.getElementById('currentCrypts').innerHTML = crypts;
     };
     if (typeof savedGame.ossuaries !== "undefined") {
         ossuaries = savedGame.ossuaries;
@@ -278,24 +278,24 @@ function updateAvailableSkeletons() {
 function buildCrypt() {
   var cryptCost = calcBuildCryptCost();
   if (stone >= cryptCost) {
-    builtCrypts += 1;
+    crypts += 1;
     stone -= cryptCost;
     document.getElementById('stone').innerHTML = stone;
     document.getElementById('nextCryptCost').innerHTML = cryptCost;
-    document.getElementById('currentCrypts').innerHTML = builtCrypts;
+    document.getElementById('currentCrypts').innerHTML = crypts;
     skeletonsCap = calcCryptSkeletonCap();
     document.getElementById('skeletonsCap').innerHTML = skeletonsCap;
   }
 }
 
 function calcBuildCryptCost() {
-  return Math.floor(10 * Math.pow(1.1,builtCrypts));
+  return Math.floor(10 * Math.pow(1.1,crypts));
 };
 
 function calcCryptSkeletonCap() {
     // placeholder: each crypt increases max skeletons by a flat "1" per crypt.
     // will later be replaced with more complicated formula related to other game mechanics
-    return builtCrypts * 1;
+    return crypts * 1;
 }
 
 function buildOssuary() {
@@ -328,7 +328,7 @@ function saveGame() {
         stone:stone,
         corpses:corpses,
         skeletons:skeletons,
-        builtCrypts:builtCrypts,
+        crypts:crypts,
         ossuaries:ossuaries
     }
     localStorage.setItem("save",JSON.stringify(save));
@@ -353,7 +353,7 @@ function resetGame() {
         stone = 0;
         corpses = 0;
         skeletons = 0;
-        builtCrypts = 1;
+        crypts = 1;
         ossuaries = 0;
         saveGame();
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
