@@ -68,7 +68,7 @@ function loadSavedGame() {
     };
     if (typeof savedGame.ossuaries !== "undefined") {
         ossuaries = savedGame.ossuaries;
-        document.getElementById('currentOss').innerHTML = ossuaries;
+        document.getElementById('currentOssuary').innerHTML = ossuaries;
     };
 };
 
