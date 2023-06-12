@@ -333,6 +333,7 @@ function resetGame() {
         corpses = 0;
         skeletons = 0;
         builtCrypts = 1;
+        ossuaries = 0;
         saveGame();
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("bones").innerHTML = bones;
