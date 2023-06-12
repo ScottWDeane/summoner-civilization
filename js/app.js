@@ -36,6 +36,7 @@ var gatherStoneOriginalText = "Collect Stone";
 var gatherCorpsesOriginalText = "Pilfer Graveyard";
 // basic buildings
 var builtCrypts = 1;
+var ossuaries = 0;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...");
