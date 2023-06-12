@@ -66,6 +66,10 @@ function loadSavedGame() {
         builtCrypts = savedGame.builtCrypts;
         document.getElementById('currentCrypts').innerHTML = builtCrypts;
     };
+    if (typeof savedGame.ossuaries !== "undefined") {
+        ossuaries = savedGame.ossuaries;
+        document.getElementById('currentOss').innerHTML = ossuaries;
+    };
 };
 
 // *****************************************
