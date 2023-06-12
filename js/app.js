@@ -298,6 +298,27 @@ function calcCryptSkeletonCap() {
     return builtCrypts * 1;
 }
 
+function buildOssuary() {
+    var ossuaryCost = calcBuildOssuaryCost();
+    if (stone >= ossuaryCost) {
+      ossuaries += 1;
+      stone -= ossuaryCost;
+      document.getElementById('stone').innerHTML = stone;
+      document.getElementById('nextOssuaryCost').innerHTML = ossuaryCost;
+      document.getElementById('currentOssuaries').innerHTML = ossuaries;
+      bonesCap = calcOssuaryBonesCap();
+      document.getElementById('bonesCap').innerHTML = bonesCap;
+    }
+}
+
+function calcBuildOssuaryCost() {
+    return Math.floor(10 * Math.pow(1.1,ossuaries));
+}
+
+function calcOssuaryBonesCap() {
+    return ossuaries * 50;
+}
+
 // save game
 function saveGame() {
     console.log("Saving game...");
