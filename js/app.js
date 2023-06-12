@@ -35,7 +35,7 @@ var gatherBonesOriginalText = "Process a cadaver";
 var gatherStoneOriginalText = "Collect Stone";
 var gatherCorpsesOriginalText = "Pilfer Graveyard";
 // basic buildings
-var crypts = 1;
+var crypts = 1; // start with 1 on new game (handwave away as your lair)
 var ossuaries = 0;
 var rockpiles = 0;
 var openPits = 0;
