@@ -71,6 +71,10 @@ function loadSavedGame() {
         ossuaries = savedGame.ossuaries;
         document.getElementById('currentOssuary').innerHTML = ossuaries;
     };
+    if (typeof savedGame.rockpiles !== "undefined") {
+        rockpiles = savedGame.rockpiles;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+    };
 };
 
 // *****************************************
