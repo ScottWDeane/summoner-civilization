@@ -37,6 +37,7 @@ var gatherCorpsesOriginalText = "Pilfer Graveyard";
 // basic buildings
 var crypts = 1;
 var ossuaries = 0;
+var rockpiles = 0;
 
 function loadSavedGame() {
     console.log("Loading saved game, if it exists...");
@@ -316,7 +317,30 @@ function calcBuildOssuaryCost() {
 }
 
 function calcOssuaryBonesCap() {
-    return ossuaries * 50;
+    return 50 + (ossuaries * 50);
+}
+
+
+// rockpiles
+function buildRockpile() {
+    var rockpileCost = calcBuildRockpileCost();
+    if (stone >= rockpileCost) {
+        rockpiles += 1;
+        stone -= rockpileCost;
+        document.getElementById('stone').innerHTML = stone;
+        document.getElementById('nextRockpileCost').innerHTML = rockpileCost;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+        stoneCap = calcRockpileStonesCap();
+        document.getElementById('stoneCap').innerHTML = stoneCap;
+    }
+}
+
+function calcBuildRockpileCost() {
+    return Math.floor(10 * Math.pow(1.1,rockpiles));
+}
+
+function calcRockpileStonesCap() {
+    return 50 + (rockpiles * 50);
 }
 
 // save game
