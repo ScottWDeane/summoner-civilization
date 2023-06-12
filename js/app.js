@@ -411,12 +411,21 @@ function resetGame() {
         skeletons = 0;
         crypts = 1;
         ossuaries = 0;
+        rockpiles = 0;
+        openPits = 0;
         saveGame();
+        // reset UI for resources
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("bones").innerHTML = bones;
         document.getElementById("stone").innerHTML = stone;
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById('skeletons').innerHTML = skeletons;
+        // reset UI for buildings
+        document.getElementById('currentCrypts').innerHTML = crypts;
+        document.getElementById('currentOssuaries').innerHTML = ossuaries;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
+
     }
 };
 
