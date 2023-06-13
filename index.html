@@ -43,9 +43,31 @@
 
     <br>
 
-    Summoned Skeletons: <span id="skeletons">0</span> / <span id="skeletonsCap">5</span> 
+    Summoned Skeletons: <span id="skeletons">0</span> / <span id="skeletonsCap">1</span> 
     <br>
     <button onClick="summonSkeleton()">Summon a Skeleton (cost: <span id="nextSkeletonCost">10</span> bones) </button>
+
+    <br>
+    <br>
+    <br>
+
+    <div>Buildings</div>
+    <br>
+    <div>Summons Capacity</div>
+    <div>
+        Crypts (increase skeleton capacity): <span id="currentCrypts">0</span> <button id="purchaseCrypt" onClick="buildCrypt()">Claim a Crypt (<span id="nextCryptCost">10</span> stone)</button>
+    </div>
+    <br>
+    <div>Resource Capacity</div>
+    <div>
+        Ossuary (increase max bones): <span id="currentOssuaries">0</span> <button id="purchaseOssuary" onClick="buildOssuary()">Build an Ossuary (<span id="nextOssuaryCost">10</span> stone)</button>
+    </div>
+    <div>
+        Rockpile (increase max stone): <span id="currentRockpiles">0</span> <button id="purchaseRockpile" onClick="buildRockpile()">Requisition a Rockpile (<span id="nextRockpileCost">10</span> stone)</button>
+    </div>
+    <div>
+        Open Pit (increase max corpses): <span id="currentOpenPits">0</span> <button id="purchaseOpenPit" onClick="buildOpenPit()">Dig an Open Pit (<span id="nextOpenPitCost">10</span> stone)</button>
+    </div>
 
     <br>
     <br>

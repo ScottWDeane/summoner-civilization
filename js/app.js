@@ -1,3 +1,4 @@
+// basic resources
 var soulEnergy = 0;
 var soulCap = 100;
 var bones = 0;
@@ -6,17 +7,16 @@ var stone = 0;
 var stoneCap = 50;
 var corpses = 0;
 var corpseCap = 50;
-var skeletons = 0;
-var skeletonsCap = 5;
-var availableSkeletons = 0;
-var gatherSoulEnergyOriginalText = "Gather Soul Energy";
-var gatherBonesOriginalText = "Process a cadaver";
-var gatherStoneOriginalText = "Collect Stone";
-var gatherCorpsesOriginalText = "Pilfer Graveyard";
+// track which resoruce is being manually gathered
 var isGatheringSouls = false;
 var isGatheringBones = false;
 var isGatheringStone = false;
 var isGatheringCorpses = false;
+// basic skeletons tracking
+var skeletons = 0;
+var skeletonsCap = 1;
+var availableSkeletons = 0;
+// tracking skeletons' labor
 var skeletonsAssignedToSoulEnergyHarvesting = 0;
 var maxSkeletonsSoulEnergyHarvesting = 1;
 var skeletonsAssignedToBoneHarvesting = 0;
@@ -29,21 +29,57 @@ var skeletonLaborSoulEnergy;
 var skeletonLaborBones;
 var skeletonLaborStone;
 var skeletonLaborCorpses;
+// misc strings to use for UI
+var gatherSoulEnergyOriginalText = "Gather Soul Energy";
+var gatherBonesOriginalText = "Process a cadaver";
+var gatherStoneOriginalText = "Collect Stone";
+var gatherCorpsesOriginalText = "Pilfer Graveyard";
+// basic buildings
+var crypts = 1; // start with 1 on new game (handwave away as your lair)
+var ossuaries = 0;
+var rockpiles = 0;
+var openPits = 0;
 
 function loadSavedGame() {
-    console.log("Loading saved game, if it exists...")
+    console.log("Loading saved game, if it exists...");
     var savedGame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savedGame.soulEnergy !== "undefined") soulEnergy = savedGame.soulEnergy;
-    if (typeof savedGame.bones !== "undefined") bones = savedGame.bones;
-    if (typeof savedGame.stone !== "undefined") stone = savedGame.stone;
-    if (typeof savedGame.corpses !== "undefined") corpses = savedGame.corpses;
-    if (typeof savedGame.skeletons !== "undefined") skeletons = savedGame.skeletons;
 
-    document.getElementById("soulEnergy").innerHTML = soulEnergy;
-    document.getElementById("bones").innerHTML = bones;
-    document.getElementById("stone").innerHTML = stone;
-    document.getElementById("corpses").innerHTML = corpses;
-    document.getElementById('skeletons').innerHTML = skeletons;
+    if (typeof savedGame.soulEnergy !== "undefined") {
+      soulEnergy = savedGame.soulEnergy;
+      document.getElementById("soulEnergy").innerHTML = soulEnergy;
+    };
+    if (typeof savedGame.bones !== "undefined") {
+      bones = savedGame.bones;
+      document.getElementById("bones").innerHTML = bones;
+    };
+    if (typeof savedGame.stone !== "undefined") {
+      stone = savedGame.stone;
+      document.getElementById("stone").innerHTML = stone;
+    };
+    if (typeof savedGame.corpses !== "undefined") {
+      corpses = savedGame.corpses;
+      document.getElementById("corpses").innerHTML = corpses;
+    };
+    if (typeof savedGame.skeletons !== "undefined") {
+      skeletons = savedGame.skeletons;
+      document.getElementById('skeletons').innerHTML = skeletons;
+    };
+    if (typeof savedGame.crypts !== "undefined") {
+        crypts = savedGame.crypts;
+        document.getElementById('currentCrypts').innerHTML = crypts;
+    };
+    if (typeof savedGame.ossuaries !== "undefined") {
+        ossuaries = savedGame.ossuaries;
+        document.getElementById('currentOssuary').innerHTML = ossuaries;
+    };
+    if (typeof savedGame.rockpiles !== "undefined") {
+        rockpiles = savedGame.rockpiles;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+    };
+    if (typeof savedGame.openPits !== "undefined") {
+        openPits = savedGame.openPits;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
+    };
 };
 
 // *****************************************
@@ -177,9 +213,16 @@ function collectCorpses(number){
 
 function summonSkeleton() {
     var skeletonCost = calcSummonSkeletonCost(); 
-    if (bones >= skeletonCost && skeletons < skeletonsCap) {
+    if (bones >= skeletonCost && skeletons <= skeletonsCap) {
         skeletons = skeletons + 1;
         bones = bones - skeletonCost;
+        // update "gather bones" UI button's display
+        if (isGatheringBones == false) {
+          document.getElementById("gatherBonesButton").innerHTML = gatherBonesOriginalText;
+        }
+        else if (isGatheringBones) {
+          document.getElementById("gatherBonesButton").innerHTML = "Gathering...";
+        };
         document.getElementById('skeletons').innerHTML = skeletons;
         document.getElementById('bones').innerHTML = bones;
     };
@@ -240,7 +283,94 @@ function removeSkeletonFromResource(selectedResource) {
 
 function updateAvailableSkeletons() {
     availableSkeletons = skeletons - skeletonsAssignedToSoulEnergyHarvesting - skeletonsAssignedToBoneHarvesting - skeletonsAssignedToStoneHarvesting - skeletonsAssignedToCorpseHarvesting;
-    // TODO: add line to update any UI elements that refer to current number of skeletons available to assign labor
+}
+
+function buildCrypt() {
+  var cryptCost = calcBuildCryptCost();
+  if (stone >= cryptCost) {
+    crypts += 1;
+    stone -= cryptCost;
+    document.getElementById('stone').innerHTML = stone;
+    document.getElementById('nextCryptCost').innerHTML = cryptCost;
+    document.getElementById('currentCrypts').innerHTML = crypts;
+    skeletonsCap = calcCryptSkeletonCap();
+    document.getElementById('skeletonsCap').innerHTML = skeletonsCap;
+  }
+}
+
+function calcBuildCryptCost() {
+  return Math.floor(10 * Math.pow(1.1,crypts));
+};
+
+function calcCryptSkeletonCap() {
+    // placeholder: each crypt increases max skeletons by a flat "1" per crypt.
+    // will later be replaced with more complicated formula related to other game mechanics
+    return crypts * 1;
+}
+
+function buildOssuary() {
+    var ossuaryCost = calcBuildOssuaryCost();
+    if (stone >= ossuaryCost) {
+      ossuaries += 1;
+      stone -= ossuaryCost;
+      document.getElementById('stone').innerHTML = stone;
+      document.getElementById('nextOssuaryCost').innerHTML = ossuaryCost;
+      document.getElementById('currentOssuaries').innerHTML = ossuaries;
+      bonesCap = calcOssuaryBonesCap();
+      document.getElementById('bonesCap').innerHTML = bonesCap;
+    }
+}
+
+function calcBuildOssuaryCost() {
+    return Math.floor(10 * Math.pow(1.1,ossuaries));
+}
+
+function calcOssuaryBonesCap() {
+    return 50 + (ossuaries * 50);
+}
+
+// rockpiles
+function buildRockpile() {
+    var rockpileCost = calcBuildRockpileCost();
+    if (stone >= rockpileCost) {
+        rockpiles += 1;
+        stone -= rockpileCost;
+        document.getElementById('stone').innerHTML = stone;
+        document.getElementById('nextRockpileCost').innerHTML = rockpileCost;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+        stoneCap = calcRockpileStonesCap();
+        document.getElementById('stoneCap').innerHTML = stoneCap;
+    }
+}
+
+function calcBuildRockpileCost() {
+    return Math.floor(10 * Math.pow(1.1,rockpiles));
+}
+
+function calcRockpileStonesCap() {
+    return 50 + (rockpiles * 50);
+}
+
+// Open Pits
+function buildOpenPit() {
+    var openPitCost = calcBuildOpenPitCost();
+    if (stone >= openPitCost) {
+        openPits += 1;
+        stone -= openPitCost;
+        document.getElementById('stone').innerHTML = stone;
+        document.getElementById('nextOpenPitCost').innerHTML = openPitCost;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
+        corpseCap = calcOpenPitCorpsesCap();
+        document.getElementById('corpseCap').innerHTML = corpseCap;
+    }
+}
+
+function calcBuildOpenPitCost() {
+    return Math.floor(10 * Math.pow(1.1,openPits));
+}
+
+function calcOpenPitCorpsesCap() {
+    return 50 + (openPits * 50);
 }
 
 // save game
@@ -251,7 +381,11 @@ function saveGame() {
         soulEnergy:soulEnergy,
         stone:stone,
         corpses:corpses,
-        skeletons:skeletons
+        skeletons:skeletons,
+        crypts:crypts,
+        ossuaries:ossuaries,
+        rockpiles:rockpiles,
+        openPits:openPits
     }
     localStorage.setItem("save",JSON.stringify(save));
 };
@@ -275,12 +409,23 @@ function resetGame() {
         stone = 0;
         corpses = 0;
         skeletons = 0;
+        crypts = 1;
+        ossuaries = 0;
+        rockpiles = 0;
+        openPits = 0;
         saveGame();
+        // reset UI for resources
         document.getElementById("soulEnergy").innerHTML = soulEnergy;
         document.getElementById("bones").innerHTML = bones;
         document.getElementById("stone").innerHTML = stone;
         document.getElementById("corpses").innerHTML = corpses;
         document.getElementById('skeletons').innerHTML = skeletons;
+        // reset UI for buildings
+        document.getElementById('currentCrypts').innerHTML = crypts;
+        document.getElementById('currentOssuaries').innerHTML = ossuaries;
+        document.getElementById('currentRockpiles').innerHTML = rockpiles;
+        document.getElementById('currentOpenPits').innerHTML = openPits;
+
     }
 };
 
