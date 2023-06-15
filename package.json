@@ -1,0 +1,19 @@
+{
+  "name": "summoner-civilization",
+  "version": "1.0.0",
+  "description": "Summoner Civilization clicker-type game. Similar to Evolve.Idle, Cookie Clicker, GrimClicker, games of that genre. But needlesly edgy and early 2000's cool.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ScottWDeane/summoner-civilization.git"
+  },
+  "author": "Scott Deane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ScottWDeane/summoner-civilization/issues"
+  },
+  "homepage": "https://github.com/ScottWDeane/summoner-civilization#readme"
+}
