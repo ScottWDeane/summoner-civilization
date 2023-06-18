@@ -104,6 +104,7 @@ const app = Vue.createApp({
     calcSummonSkeletonCost() {
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
 
+    },
     }
   }
 });
