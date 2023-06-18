@@ -15,6 +15,9 @@ const app = Vue.createApp({
       isGatheringBones: false,
       isGatheringStone: false,
       isGatheringCorpses: false,
+      // basic buildings
+      crypts: 1, // start with 1 on new game (hand-wave away as your lair)
+      nextCryptCost: 10,
       // skeleton laborers
       skeletons: 0,
       skeletonsCap: 1,
@@ -105,6 +108,20 @@ const app = Vue.createApp({
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
 
     },
+    buildCrypt() {
+      this.calcBuildCryptCost();
+      if (this.stone >= this.nextCryptCost) {
+        this.crypts += 1;
+        this.stone -= this.nextCryptCost;
+        this.skeletonsCap = this.calcCryptSkeletonCap();
+      }
+
+    },
+    calcBuildCryptCost() {
+      this.nextCryptCost = Math.floor(10 * Math.pow(1.1, this.crypts));
+    },
+    calcCryptSkeletonCap() {
+      return this.crypts * 1;
     }
   }
 });

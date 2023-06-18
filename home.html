@@ -38,6 +38,16 @@
             <button @click="summonSkeleton" class="button">Summon a Skeleton: Cost {{ nextSkeletonCost }}
                 Bones</button>
         </div>
+
+        <br>
+        <div>Buildings</div>
+        <br>
+        <div>Summons Capacity</div>
+        <div>
+            Crypts (increase skeleton capacity): <span id="currentCrypts"> {{ crypts }}</span>
+            <button @click="buildCrypt">Claim a Crypt ({{ nextCryptCost
+                }} stone) </button>
+        </div>
     </div>
 
     <!-- Import App -->
