@@ -22,7 +22,7 @@ const app = Vue.createApp({
     }
   },
   async created() {
-    setInterval(this.collectCurrentManualResource, 100);
+    setInterval(this.collectCurrentManualResource, 10);
     this.calcSummonSkeletonCost();
   },
   methods: {
