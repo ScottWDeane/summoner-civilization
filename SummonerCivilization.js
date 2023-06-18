@@ -18,6 +18,8 @@ const app = Vue.createApp({
       // basic buildings
       crypts: 1, // start with 1 on new game (hand-wave away as your lair)
       nextCryptCost: 10,
+      ossuaries: 0,
+      nextOssuaryCost: 10,
       // skeleton laborers
       skeletons: 0,
       skeletonsCap: 1,
@@ -122,6 +124,20 @@ const app = Vue.createApp({
     },
     calcCryptSkeletonCap() {
       return this.crypts * 1;
+    },
+    buildOssuary() {
+      this.calcBuildOssuaryCost();
+      if (this.stone >= this.nextOssuaryCost) {
+        this.ossuaries += 1;
+        this.stone -= this.nextOssuaryCost;
+        this.bonesCap = this.calcOssuaryBonesCap();
+      }
+    },
+    calcBuildOssuaryCost() {
+      this.nextOssuaryCost = Math.floor(10 * Math.pow(1.1, this.ossuaries));
+    },
+    calcOssuaryBonesCap() {
+      return 50 + (this.ossuaries * 50);
     }
   }
 });

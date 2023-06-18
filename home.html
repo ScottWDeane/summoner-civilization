@@ -48,6 +48,12 @@
             <button @click="buildCrypt">Claim a Crypt ({{ nextCryptCost
                 }} stone) </button>
         </div>
+        <br>
+        <div>Resource Capacity</div>
+        <div>
+            Ossuary (increase max bones): <span id="currentOssuaries"> {{ ossuaries }}</span> <button class="button"
+                @click="buildOssuary">Build an Ossuary </button>
+        </div>
     </div>
 
     <!-- Import App -->
