@@ -22,6 +22,8 @@ const app = Vue.createApp({
       nextOssuaryCost: 10,
       rockpiles: 0,
       nextRockpileCost: 10,
+      openPits: 0,
+      nextOpenPitCost: 10,
       // skeleton laborers
       skeletons: 0,
       skeletonsCap: 1,
@@ -154,6 +156,20 @@ const app = Vue.createApp({
     },
     calcRockpileStonesCap() {
       return 50 + (this.rockpiles * 50);
+    },
+    buildOpenPit() {
+      this.calcBuildNextOpenPitCost();
+      if (this.stone >= this.nextOpenPitCost) {
+        this.openPits += 1;
+        this.stone -= this.nextOpenPitCost;
+        this.corpseCap = this.calcOpenPitCorpsesCap();
+      }
+    },
+    calcBuildNextOpenPitCost() {
+      this.nextOpenPitCost = Math.floor(10 * Math.pow(1.1, this.openPits));
+    },
+    calcOpenPitCorpsesCap() {
+      return 50 + (this.openPits * 50);
     }
   }
 });
