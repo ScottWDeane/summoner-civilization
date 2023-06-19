@@ -290,6 +290,13 @@ const app = Vue.createApp({
       if (typeof savedGame.openPits !== "undefined") {
         this.openPits = savedGame.openPits;
       };
+    },
+    deleteSave() {
+      var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
+      if (doubleCheck) {
+        console.log("Deleting game save...");
+        localStorage.removeItem("save");
+      }
     }
   }
 });
