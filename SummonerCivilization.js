@@ -113,11 +113,9 @@ const app = Vue.createApp({
         this.bones = this.bones - this.nextSkeletonCost;
         this.calcSummonSkeletonCost();
       }
-
     },
     calcSummonSkeletonCost() {
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
-
     },
     buildCrypt() {
       this.calcBuildCryptCost();
@@ -126,7 +124,6 @@ const app = Vue.createApp({
         this.stone -= this.nextCryptCost;
         this.skeletonsCap = this.calcCryptSkeletonCap();
       }
-
     },
     calcBuildCryptCost() {
       this.nextCryptCost = Math.floor(10 * Math.pow(1.1, this.crypts));
