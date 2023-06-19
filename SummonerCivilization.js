@@ -131,6 +131,10 @@ const app = Vue.createApp({
     calcSummonSkeletonCost() {
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
     },
+    updateAvailableSkeletons() {
+      console.log("Available skeletons: " + this.availableSkeletons)
+      this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
+    },
     buildCrypt() {
       this.calcBuildCryptCost();
       if (this.stone >= this.nextCryptCost) {
