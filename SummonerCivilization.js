@@ -30,7 +30,7 @@ const app = Vue.createApp({
       nextSkeletonCost: 0,
     }
   },
-  async created() {
+  created() {
     setInterval(this.collectCurrentManualResource, 10);
     this.calcSummonSkeletonCost();
     this.calcBuildOssuaryCost();
