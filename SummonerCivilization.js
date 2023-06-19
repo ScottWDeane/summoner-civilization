@@ -28,6 +28,20 @@ const app = Vue.createApp({
       skeletons: 0,
       skeletonsCap: 1,
       nextSkeletonCost: 0,
+      availableSkeletons: 0,
+      // track skeleton labor
+      skeletonsAssignedToSoulEnergyHarvesting: 0,
+      maxSkeletonsSoulEnergyHarvesting: 1,
+      skeletonsAssignedToBoneHarvesting: 0,
+      maxSkeletonsBoneHarvesting: 1,
+      skeletonsAssignedToStoneHarvesting: 0,
+      maxSkeletonsStoneHarvesting: 1,
+      skeletonsAssignedToCorpseHarvesting: 0,
+      maxSkeletonsCorpseHarvesting: 1,
+      skeletonLaborSoulEnergy: 0,
+      skeletonLaborBones: 0,
+      skeletonLaborStone: 0,
+      skeletonLaborCorpses: 0
     }
   },
   created() {
