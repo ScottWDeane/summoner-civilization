@@ -131,6 +131,30 @@ const app = Vue.createApp({
     calcSummonSkeletonCost() {
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
     },
+    assignSkeletonToResource(selectedResource) {
+      console.log("Attempting to assign a skeleton to a labor...")
+      // check if we have any available skeletons
+      this.updateAvailableSkeletons();
+      if (this.availableSkeletons >= 1) {
+        if (selectedResource == "soulEnergy" && this.skeletonsAssignedToSoulEnergyHarvesting < this.maxSkeletonsSoulEnergyHarvesting) {
+          this.skeletonsAssignedToSoulEnergyHarvesting += 1;
+          // document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
+        }
+        else if (selectedResource == "bones" && this.skeletonsAssignedToBoneHarvesting < this.maxSkeletonsBoneHarvesting) {
+          this.skeletonsAssignedToBoneHarvesting += 1;
+          // document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
+        }
+        else if (selectedResource == "stone" && this.skeletonsAssignedToStoneHarvesting < this.maxSkeletonsStoneHarvesting) {
+          this.skeletonsAssignedToStoneHarvesting += 1;
+          // document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
+        }
+        else if (selectedResource == "corpses" && this.skeletonsAssignedToCorpseHarvesting < this.maxSkeletonsCorpseHarvesting) {
+          this.skeletonsAssignedToCorpseHarvesting += 1;
+          // document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
+        };
+      };
+      this.updateAvailableSkeletons();
+    },
     updateAvailableSkeletons() {
       console.log("Available skeletons: " + this.availableSkeletons)
       this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
