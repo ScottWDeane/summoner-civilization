@@ -139,19 +139,15 @@ const app = Vue.createApp({
       if (this.availableSkeletons >= 1) {
         if (selectedResource == "soulEnergy" && this.skeletonsAssignedToSoulEnergyHarvesting < this.maxSkeletonsSoulEnergyHarvesting) {
           this.skeletonsAssignedToSoulEnergyHarvesting += 1;
-          // document.getElementById('numberOfSkeletonsHarvestingSoulEnergy').innerHTML = skeletonsAssignedToSoulEnergyHarvesting;
         }
         else if (selectedResource == "bones" && this.skeletonsAssignedToBoneHarvesting < this.maxSkeletonsBoneHarvesting) {
           this.skeletonsAssignedToBoneHarvesting += 1;
-          // document.getElementById('numberOfSkeletonsHarvestingBones').innerHTML = skeletonsAssignedToBoneHarvesting;
         }
         else if (selectedResource == "stone" && this.skeletonsAssignedToStoneHarvesting < this.maxSkeletonsStoneHarvesting) {
           this.skeletonsAssignedToStoneHarvesting += 1;
-          // document.getElementById('numberOfSkeletonsHarvestingStone').innerHTML = skeletonsAssignedToStoneHarvesting;
         }
         else if (selectedResource == "corpses" && this.skeletonsAssignedToCorpseHarvesting < this.maxSkeletonsCorpseHarvesting) {
           this.skeletonsAssignedToCorpseHarvesting += 1;
-          // document.getElementById('numberOfSkeletonsHarvestingCorpses').innerHTML = skeletonsAssignedToCorpseHarvesting;
         };
       };
       this.updateAvailableSkeletons();
@@ -179,19 +175,15 @@ const app = Vue.createApp({
     collectSkeletonLabor() {
       this.skeletonLaborSoulEnergy = this.skeletonsAssignedToSoulEnergyHarvesting * 1;
       this.collectSoulEnergy(this.skeletonLaborSoulEnergy);
-      // document.getElementById("soulEnergyCollectionRate").innerHTML = skeletonLaborSoulEnergy;
 
       this.skeletonLaborBones = this.skeletonsAssignedToBoneHarvesting * 1;
       this.collectBones(this.skeletonLaborBones);
-      // document.getElementById("bonesCollectionRate").innerHTML = skeletonLaborBones;
 
       this.skeletonLaborStone = this.skeletonsAssignedToStoneHarvesting * 1;
       this.collectStone(this.skeletonLaborStone);
-      // document.getElementById("stoneCollectionRate").innerHTML = skeletonLaborStone;
 
       this.skeletonLaborCorpses = this.skeletonsAssignedToCorpseHarvesting * 1;
       this.collectCorpses(this.skeletonLaborCorpses);
-      // document.getElementById("corpsesCollectionRate").innerHTML = skeletonLaborCorpses;
     },
     buildCrypt() {
       this.calcBuildCryptCost();
