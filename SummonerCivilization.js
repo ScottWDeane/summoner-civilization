@@ -46,6 +46,7 @@ const app = Vue.createApp({
   },
   created() {
     setInterval(this.collectCurrentManualResource, 10);
+    setInterval(this.collectSkeletonLabor, 10);
     this.calcSummonSkeletonCost();
     this.calcBuildOssuaryCost();
     this.calcBuildCryptCost();
@@ -158,6 +159,23 @@ const app = Vue.createApp({
     updateAvailableSkeletons() {
       console.log("Available skeletons: " + this.availableSkeletons)
       this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
+    },
+    collectSkeletonLabor() {
+      this.skeletonLaborSoulEnergy = this.skeletonsAssignedToSoulEnergyHarvesting * 1;
+      this.collectSoulEnergy(this.skeletonLaborSoulEnergy);
+      // document.getElementById("soulEnergyCollectionRate").innerHTML = skeletonLaborSoulEnergy;
+
+      this.skeletonLaborBones = this.skeletonsAssignedToBoneHarvesting * 1;
+      this.collectBones(this.skeletonLaborBones);
+      // document.getElementById("bonesCollectionRate").innerHTML = skeletonLaborBones;
+
+      this.skeletonLaborStone = this.skeletonsAssignedToStoneHarvesting * 1;
+      this.collectStone(this.skeletonLaborStone);
+      // document.getElementById("stoneCollectionRate").innerHTML = skeletonLaborStone;
+
+      this.skeletonLaborCorpses = this.skeletonsAssignedToCorpseHarvesting * 1;
+      this.collectCorpses(this.skeletonLaborCorpses);
+      // document.getElementById("corpsesCollectionRate").innerHTML = skeletonLaborCorpses;
     },
     buildCrypt() {
       this.calcBuildCryptCost();
