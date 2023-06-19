@@ -1,82 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Dungeon Delving</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/interface.css'>
-    <script src='js/app.js' defer></script>
+    <meta charset="UTF-8" />
+    <title>Summoner Civilization</title>
+    <!-- Import Styles -->
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/interface.css'>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 </head>
+
 <body>
-    <div>
-        Soul Energy: <span id="soulEnergy">0</span> / <span id="soulCap">100</span> (<span id="soulEnergyCollectionRate">0</span> / s)
-        <button id="gatherSoulEnergyButton" onClick="setGatherResource('soulEnergy')">Gather Soul Energy</button> 
-        <button id="assignSkeletonToSoulEnergyCollection" onClick="assignSkeletonToResource('soulEnergy')">Assign a Skeleton</button>
-        <button id="removeSkeletonFromSoulEnergyHarvesting" onClick="removeSkeletonFromResource('soulEnergy')">Remove a Skeleton</button>
-        Skeletons: <span id="numberOfSkeletonsHarvestingSoulEnergy">0</span> / <span id="maxSkeletonsSoulEnergyHarvesting">1</span>
+    <div id="app">
+        <div>
+            <span id="soulEnergy">Soul Energy: {{ soulEnergy }} / {{ soulCap }} </span>
+            <span> {{ " " + skeletonLaborSoulEnergy + "/s"}}</span>
+            <button class="button" @click="setGatherResource('soulEnergy')">Gather Soul Energy</button>
+            <button class="button" @click="assignSkeletonToResource('soulEnergy')">Assign a Skeleton</button>
+            <button class="button" @click="removeSkeletonFromResource('soulEnergy')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToSoulEnergyHarvesting }} / {{
+                maxSkeletonsSoulEnergyHarvesting }}</span>
+        </div>
+        <div>
+            <span id="bones">Bones: {{ bones }} / {{ bonesCap }} </span>
+            <span> {{ " " + skeletonLaborBones + "/s"}}</span>
+            <button class="button" @click="setGatherResource('bones')">Process a cadaver</button>
+            <button class="button" @click="assignSkeletonToResource('bones')">Assign a Skeleton</button>
+            <button class="button" @click="removeSkeletonFromResource('bones')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToBoneHarvesting }} / {{
+                maxSkeletonsBoneHarvesting }}</span>
+        </div>
+
+        <div>
+            <span id="stone">Stone: {{ stone }} / {{ stoneCap }} </span>
+            <span> {{ " " + skeletonLaborStone + "/s"}}</span>
+            <button class="button" @click="setGatherResource('stone')">Collect Stone</button>
+            <button class="button" @click="assignSkeletonToResource('stone')">Assign a Skeleton</button>
+            <button class="button" @click="removeSkeletonFromResource('stone')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToStoneHarvesting }} / {{
+                maxSkeletonsStoneHarvesting }}</span>
+        </div>
+
+        <div>
+            <span id="corpses">Corpses: {{ corpses }} / {{ corpseCap }} </span>
+            <span> {{ " " + skeletonLaborCorpses + "/s"}}</span>
+            <button class="button" @click="setGatherResource('corpses')">Pilfer Graveyard</button>
+            <button class="button" @click="assignSkeletonToResource('corpses')">Assign a Skeleton</button>
+            <button class="button" @click="removeSkeletonFromResource('corpses')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToCorpseHarvesting }} / {{
+                maxSkeletonsCorpseHarvesting }}</span>
+        </div>
+
+        <br>
+
+        <div>
+            <span>Current Skeletons: {{ skeletons }} / {{ skeletonsCap }} </span>
+            <button @click="summonSkeleton" class="button">Summon a Skeleton: Cost {{ nextSkeletonCost }}
+                Bones</button>
+        </div>
+
+        <br>
+        <div>Buildings</div>
+        <br>
+        <div>Summons Capacity</div>
+        <div>
+            Crypts (increase skeleton capacity): <span id="currentCrypts"> {{ crypts }}</span>
+            <button class="button" @click="buildCrypt">Claim a Crypt ({{ nextCryptCost
+                }} stone) </button>
+        </div>
+        <br>
+        <div>Resource Capacity</div>
+        <div>
+            Ossuary (increase max bones): <span id="currentOssuaries"> {{ ossuaries }}</span> <button class="button"
+                @click="buildOssuary">Build an Ossuary ({{ nextOssuaryCost }} stone)</button>
+        </div>
+        <div>
+            Rockpile (increase max stone): <span id="currentRockpiles"> {{ rockpiles }} </span> <button
+                id="purchaseRockpile" class="button" @click="buildRockpile">Requisition a Rockpile ({{ nextRockpileCost
+                }} stone)</button>
+        </div>
+        <div>
+            Open Pit (increase max corpses): <span id="currentOpenPits"> {{ openPits }} </span> <button
+                id="purchaseOpenPit" class="button" @click="buildOpenPit">Dig an Open Pit ({{ nextOpenPitCost }}
+                stone)</button>
+        </div>
+
+        <br>
+        <button @click="saveGame">Manual Game Save</button>
+        <br>
+        <button @click="loadSavedGame">Manual Game Load</button>
+        <br>
+        <button @click="deleteSave">Delete Save</button>
     </div>
 
-    <div>
-        Bones: <span id="bones">0</span> / <span id="bonesCap">10</span> (<span id="bonesCollectionRate">0</span> / s) 
-        <button id="gatherBonesButton" onClick="setGatherResource('bones')">Process a cadaver</button>
-        <button id="assignSkeletonToBonesCollection(1)" onClick="assignSkeletonToResource('bones')">Assign a Skeleton</button>
-        <button id="removeSkeletonFromBoneHarvesting" onClick="removeSkeletonFromResource('bones')">Remove a Skeleton</button>
-        Skeletons: <span id="numberOfSkeletonsHarvestingBones">0</span> / <span id="maxSkeletonsBonesHarvesting">1</span>
-    </div>
+    <!-- Import App -->
+    <script src="./SummonerCivilization.js"></script>
 
-    <div>
-        Stone: <span id="stone">0</span> / <span id="stoneCap">10</span> (<span id="stoneCollectionRate">0</span> / s) 
-        <button id="gatherStoneButton" onClick="setGatherResource('stone')">Collect Stone</button>
-        <button id="assignSkeletonToStoneCollection(1)" onClick="assignSkeletonToResource('stone')">Assign a Skeleton</button>
-        <button id="removeSkeletonFromStoneHarvesting" onClick="removeSkeletonFromResource('stone')">Remove a Skeleton</button>
-        Skeletons: <span id="numberOfSkeletonsHarvestingStone">0</span> / <span id="maxSkeletonsStoneHarvesting">1</span>
-    </div>
+    <!-- Mount App -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
 
-    <div>
-        Corpses: <span id="corpses">0</span> / <span id="corpseCap">10</span> (<span id="corpsesCollectionRate">0</span> / s) 
-        <button id="gatherCorpsesButton" onClick="setGatherResource('corpses')">Pilfer Graveyard</button>
-        <button id="assignSkeletonToCorpsesCollection(1)" onClick="assignSkeletonToResource('corpses')">Assign a Skeleton</button>
-        <button id="removeSkeletonFromCorpseHarvesting" onClick="removeSkeletonFromResource('corpses')">Remove a Skeleton</button>
-        Skeletons: <span id="numberOfSkeletonsHarvestingCorpses">0</span> / <span id="maxSkeletonsCorpseHarvesting">1</span>
-    </div>
-
-    <br>
-
-    Summoned Skeletons: <span id="skeletons">0</span> / <span id="skeletonsCap">1</span> 
-    <br>
-    <button onClick="summonSkeleton()">Summon a Skeleton (cost: <span id="nextSkeletonCost">10</span> bones) </button>
-
-    <br>
-    <br>
-    <br>
-
-    <div>Buildings</div>
-    <br>
-    <div>Summons Capacity</div>
-    <div>
-        Crypts (increase skeleton capacity): <span id="currentCrypts">0</span> <button id="purchaseCrypt" onClick="buildCrypt()">Claim a Crypt (<span id="nextCryptCost">10</span> stone)</button>
-    </div>
-    <br>
-    <div>Resource Capacity</div>
-    <div>
-        Ossuary (increase max bones): <span id="currentOssuaries">0</span> <button id="purchaseOssuary" onClick="buildOssuary()">Build an Ossuary (<span id="nextOssuaryCost">10</span> stone)</button>
-    </div>
-    <div>
-        Rockpile (increase max stone): <span id="currentRockpiles">0</span> <button id="purchaseRockpile" onClick="buildRockpile()">Requisition a Rockpile (<span id="nextRockpileCost">10</span> stone)</button>
-    </div>
-    <div>
-        Open Pit (increase max corpses): <span id="currentOpenPits">0</span> <button id="purchaseOpenPit" onClick="buildOpenPit()">Dig an Open Pit (<span id="nextOpenPitCost">10</span> stone)</button>
-    </div>
-
-    <br>
-    <br>
-    <br>
-
-    <button onClick="saveGame()">Manual Game Save</button>
-    <br>
-    <button onClick="deleteSave()">Delete Save</button>
-    <br>
-    <button onClick="resetGame()">Completely Reset Game</button>
 </body>
-</html>
