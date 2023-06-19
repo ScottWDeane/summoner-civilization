@@ -156,6 +156,22 @@ const app = Vue.createApp({
       };
       this.updateAvailableSkeletons();
     },
+    removeSkeletonFromResource(selectedResource) {
+      this.updateAvailableSkeletons();
+      if (selectedResource == "soulEnergy" && this.skeletonsAssignedToSoulEnergyHarvesting > 0) {
+        this.skeletonsAssignedToSoulEnergyHarvesting -= 1;
+      }
+      else if (selectedResource == "bones" && this.skeletonsAssignedToBoneHarvesting > 0) {
+        this.skeletonsAssignedToBoneHarvesting -= 1;
+      }
+      else if (selectedResource == "stone" && this.skeletonsAssignedToStoneHarvesting > 0) {
+        this.skeletonsAssignedToStoneHarvesting -= 1;
+      }
+      else if (selectedResource == "corpses" && this.skeletonsAssignedToCorpseHarvesting > 0) {
+        this.skeletonsAssignedToCorpseHarvesting -= 1;
+      };
+      this.updateAvailableSkeletons();
+    },
     updateAvailableSkeletons() {
       console.log("Available skeletons: " + this.availableSkeletons)
       this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
