@@ -33,6 +33,10 @@ const app = Vue.createApp({
   async created() {
     setInterval(this.collectCurrentManualResource, 10);
     this.calcSummonSkeletonCost();
+    this.calcBuildOssuaryCost();
+    this.calcBuildCryptCost();
+    this.calcBuildRockpileCost();
+    this.calcBuildOpenPitCost();
   },
   methods: {
     setGatherResource(currentResource) {
