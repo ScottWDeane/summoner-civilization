@@ -107,8 +107,9 @@ const app = Vue.createApp({
       if (this.bones >= this.nextSkeletonCost && this.skeletons < this.skeletonsCap) {
         this.skeletons = this.skeletons + 1;
         this.bones = this.bones - this.nextSkeletonCost;
+        this.calcSummonSkeletonCost();
       }
-      this.calcSummonSkeletonCost();
+
     },
     calcSummonSkeletonCost() {
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
@@ -135,6 +136,7 @@ const app = Vue.createApp({
         this.ossuaries += 1;
         this.stone -= this.nextOssuaryCost;
         this.bonesCap = this.calcOssuaryBonesCap();
+        this.calcBuildOssuaryCost();
       }
     },
     calcBuildOssuaryCost() {
@@ -149,6 +151,7 @@ const app = Vue.createApp({
         this.rockpiles += 1;
         this.stone -= this.nextRockpileCost;
         this.stoneCap = this.calcRockpileStonesCap();
+        this.calcBuildRockpileCost();
       }
     },
     calcBuildRockpileCost() {
@@ -163,6 +166,7 @@ const app = Vue.createApp({
         this.openPits += 1;
         this.stone -= this.nextOpenPitCost;
         this.corpseCap = this.calcOpenPitCorpsesCap();
+        this.calcBuildNextOpenPitCost();
       }
     },
     calcBuildNextOpenPitCost() {
