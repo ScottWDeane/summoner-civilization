@@ -52,15 +52,17 @@
         <div>Resource Capacity</div>
         <div>
             Ossuary (increase max bones): <span id="currentOssuaries"> {{ ossuaries }}</span> <button class="button"
-                @click="buildOssuary">Build an Ossuary </button>
+                @click="buildOssuary">Build an Ossuary ({{ nextOssuaryCost }} stone)</button>
         </div>
         <div>
             Rockpile (increase max stone): <span id="currentRockpiles"> {{ rockpiles }} </span> <button
-                id="purchaseRockpile" class="button" @click="buildRockpile">Requisition a Rockpile </button>
+                id="purchaseRockpile" class="button" @click="buildRockpile">Requisition a Rockpile ({{ nextRockpileCost
+                }} stone)</button>
         </div>
         <div>
             Open Pit (increase max corpses): <span id="currentOpenPits"> {{ openPits }} </span> <button
-                id="purchaseOpenPit" class="button" @click="buildOpenPit">Dig an Open Pit </button>
+                id="purchaseOpenPit" class="button" @click="buildOpenPit">Dig an Open Pit ({{ nextOpenPitCost }}
+                stone)</button>
         </div>
     </div>
 
