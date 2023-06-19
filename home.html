@@ -17,12 +17,16 @@
             <button class="button" @click="setGatherResource('soulEnergy')">Gather Soul Energy</button>
             <button class="button" @click="assignSkeletonToResource('soulEnergy')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('soulEnergy')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToSoulEnergyHarvesting }} / {{
+                maxSkeletonsSoulEnergyHarvesting }}</span>
         </div>
         <div>
             <span id="bones">Bones: {{ bones }} / {{ bonesCap }} </span>
             <button class="button" @click="setGatherResource('bones')">Process a cadaver</button>
             <button class="button" @click="assignSkeletonToResource('bones')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('bones')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToBoneHarvesting }} / {{
+                maxSkeletonsBoneHarvesting }}</span>
         </div>
 
         <div>
@@ -30,6 +34,8 @@
             <button class="button" @click="setGatherResource('stone')">Collect Stone</button>
             <button class="button" @click="assignSkeletonToResource('stone')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('stone')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToStoneHarvesting }} / {{
+                maxSkeletonsStoneHarvesting }}</span>
         </div>
 
         <div>
@@ -37,6 +43,8 @@
             <button class="button" @click="setGatherResource('corpses')">Pilfer Graveyard</button>
             <button class="button" @click="assignSkeletonToResource('corpses')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('corpses')">Remove a Skeleton</button>
+            <span>Skeletons assigned: {{ skeletonsAssignedToCorpseHarvesting }} / {{
+                maxSkeletonsCorpseHarvesting }}</span>
         </div>
 
         <br>
