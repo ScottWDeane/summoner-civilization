@@ -14,6 +14,7 @@
     <div id="app">
         <div>
             <span id="soulEnergy">Soul Energy: {{ soulEnergy }} / {{ soulCap }} </span>
+            <span> {{ " " + skeletonLaborSoulEnergy + "/s"}}</span>
             <button class="button" @click="setGatherResource('soulEnergy')">Gather Soul Energy</button>
             <button class="button" @click="assignSkeletonToResource('soulEnergy')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('soulEnergy')">Remove a Skeleton</button>
@@ -22,6 +23,7 @@
         </div>
         <div>
             <span id="bones">Bones: {{ bones }} / {{ bonesCap }} </span>
+            <span> {{ " " + skeletonLaborBones + "/s"}}</span>
             <button class="button" @click="setGatherResource('bones')">Process a cadaver</button>
             <button class="button" @click="assignSkeletonToResource('bones')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('bones')">Remove a Skeleton</button>
@@ -31,6 +33,7 @@
 
         <div>
             <span id="stone">Stone: {{ stone }} / {{ stoneCap }} </span>
+            <span> {{ " " + skeletonLaborStone + "/s"}}</span>
             <button class="button" @click="setGatherResource('stone')">Collect Stone</button>
             <button class="button" @click="assignSkeletonToResource('stone')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('stone')">Remove a Skeleton</button>
@@ -40,6 +43,7 @@
 
         <div>
             <span id="corpses">Corpses: {{ corpses }} / {{ corpseCap }} </span>
+            <span> {{ " " + skeletonLaborCorpses + "/s"}}</span>
             <button class="button" @click="setGatherResource('corpses')">Pilfer Graveyard</button>
             <button class="button" @click="assignSkeletonToResource('corpses')">Assign a Skeleton</button>
             <button class="button" @click="removeSkeletonFromResource('corpses')">Remove a Skeleton</button>
