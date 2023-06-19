@@ -243,6 +243,22 @@ const app = Vue.createApp({
     },
     calcOpenPitCorpsesCap() {
       return 50 + (this.openPits * 50);
+    },
+    saveGame() {
+      console.log("Saving game...");
+      var save = {
+        bones: this.bones,
+        soulEnergy: this.soulEnergy,
+        stone: this.stone,
+        corpses: this.corpses,
+        skeletons: this.skeletons,
+        crypts: this.crypts,
+        ossuaries: this.ossuaries,
+        rockpiles: this.rockpiles,
+        openPits: this.openPits
+      }
+      localStorage.setItem("save", JSON.stringify(save));
+    },
     }
   }
 });
