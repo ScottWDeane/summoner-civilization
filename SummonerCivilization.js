@@ -297,6 +297,20 @@ const app = Vue.createApp({
         if (typeof savedGame.openPits !== "undefined") {
           this.openPits = savedGame.openPits;
         }
+        if (typeof savedGame.skeletonsAssignedToSoulEnergyHarvesting !== "undefined") {
+          console.log("Assigned skeletons to soul energy: " + this.skeletonsAssignedToSoulEnergyHarvesting);
+          this.skeletonsAssignedToSoulEnergyHarvesting = savedGame.skeletonsAssignedToSoulEnergyHarvesting;
+          console.log("Assigned skeletons to soul energy 2: " + this.skeletonsAssignedToSoulEnergyHarvesting);
+        }
+        if (typeof savedGame.skeletonsAssignedToBoneHarvesting !== "undefined") {
+          this.skeletonsAssignedToBoneHarvesting = savedGame.skeletonsAssignedToBoneHarvesting;
+        }
+        if (typeof savedGame.skeletonsAssignedToStoneHarvesting !== "undefined") {
+          this.skeletonsAssignedToStoneHarvesting = savedGame.skeletonsAssignedToStoneHarvesting;
+        }
+        if (typeof savedGame.skeletonsAssignedToCorpseHarvesting !== "undefined") {
+          this.skeletonsAssignedToCorpseHarvesting = savedGame.skeletonsAssignedToCorpseHarvesting;
+        }
       }
 
 
