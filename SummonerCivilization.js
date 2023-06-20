@@ -45,7 +45,7 @@ const app = Vue.createApp({
     }
   },
   created() {
-    this.loadSavedGame(); // TODO: needs fixing
+    this.loadSavedGame();
     setInterval(this.collectCurrentManualResource, 10);
     setInterval(this.collectSkeletonLabor, 10);
     this.calcSummonSkeletonCost();
