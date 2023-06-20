@@ -134,7 +134,6 @@ const app = Vue.createApp({
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
     },
     assignSkeletonToResource(selectedResource) {
-      console.log("Attempting to assign a skeleton to a labor...")
       // check if we have any available skeletons
       this.updateAvailableSkeletons();
       if (this.availableSkeletons >= 1) {
@@ -170,7 +169,6 @@ const app = Vue.createApp({
       this.updateAvailableSkeletons();
     },
     updateAvailableSkeletons() {
-      console.log("Available skeletons: " + this.availableSkeletons)
       this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
     },
     collectSkeletonLabor() {
@@ -298,9 +296,7 @@ const app = Vue.createApp({
           this.openPits = savedGame.openPits;
         }
         if (typeof savedGame.skeletonsAssignedToSoulEnergyHarvesting !== "undefined") {
-          console.log("Assigned skeletons to soul energy: " + this.skeletonsAssignedToSoulEnergyHarvesting);
           this.skeletonsAssignedToSoulEnergyHarvesting = savedGame.skeletonsAssignedToSoulEnergyHarvesting;
-          console.log("Assigned skeletons to soul energy 2: " + this.skeletonsAssignedToSoulEnergyHarvesting);
         }
         if (typeof savedGame.skeletonsAssignedToBoneHarvesting !== "undefined") {
           this.skeletonsAssignedToBoneHarvesting = savedGame.skeletonsAssignedToBoneHarvesting;
