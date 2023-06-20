@@ -45,7 +45,7 @@ const app = Vue.createApp({
     }
   },
   created() {
-    // this.loadSavedGame(); TODO: needs fixing
+    this.loadSavedGame();
     setInterval(this.collectCurrentManualResource, 10);
     setInterval(this.collectSkeletonLabor, 10);
     this.calcSummonSkeletonCost();
@@ -134,7 +134,6 @@ const app = Vue.createApp({
       this.nextSkeletonCost = Math.floor(10 * Math.pow(1.1, this.skeletons));
     },
     assignSkeletonToResource(selectedResource) {
-      console.log("Attempting to assign a skeleton to a labor...")
       // check if we have any available skeletons
       this.updateAvailableSkeletons();
       if (this.availableSkeletons >= 1) {
@@ -170,7 +169,6 @@ const app = Vue.createApp({
       this.updateAvailableSkeletons();
     },
     updateAvailableSkeletons() {
-      console.log("Available skeletons: " + this.availableSkeletons)
       this.availableSkeletons = this.skeletons - this.skeletonsAssignedToSoulEnergyHarvesting - this.skeletonsAssignedToBoneHarvesting - this.skeletonsAssignedToStoneHarvesting - this.skeletonsAssignedToCorpseHarvesting;
     },
     collectSkeletonLabor() {
@@ -256,7 +254,11 @@ const app = Vue.createApp({
         crypts: this.crypts,
         ossuaries: this.ossuaries,
         rockpiles: this.rockpiles,
-        openPits: this.openPits
+        openPits: this.openPits,
+        skeletonsAssignedToSoulEnergyHarvesting: this.skeletonsAssignedToSoulEnergyHarvesting,
+        skeletonsAssignedToBoneHarvesting: this.skeletonsAssignedToBoneHarvesting,
+        skeletonsAssignedToStoneHarvesting: this.skeletonsAssignedToStoneHarvesting,
+        skeletonsAssignedToCorpseHarvesting: this.skeletonsAssignedToCorpseHarvesting
       }
       localStorage.setItem("save", JSON.stringify(save));
     },
@@ -264,33 +266,52 @@ const app = Vue.createApp({
       console.log("Loading saved game, if it exists...");
       var savedGame = JSON.parse(localStorage.getItem("save"));
 
-      if (typeof savedGame.soulEnergy !== "undefined") {
-        this.soulEnergy = savedGame.soulEnergy;
-      };
-      if (typeof savedGame.bones !== "undefined") {
-        this.bones = savedGame.bones;
-      };
-      if (typeof savedGame.stone !== "undefined") {
-        this.stone = savedGame.stone;
-      };
-      if (typeof savedGame.corpses !== "undefined") {
-        this.corpses = savedGame.corpses;
-      };
-      if (typeof savedGame.skeletons !== "undefined") {
-        this.skeletons = savedGame.skeletons;
-      };
-      if (typeof savedGame.crypts !== "undefined") {
-        this.crypts = savedGame.crypts;
-      };
-      if (typeof savedGame.ossuaries !== "undefined") {
-        this.ossuaries = savedGame.ossuaries;
-      };
-      if (typeof savedGame.rockpiles !== "undefined") {
-        this.rockpiles = savedGame.rockpiles;
-      };
-      if (typeof savedGame.openPits !== "undefined") {
-        this.openPits = savedGame.openPits;
-      };
+      if (savedGame) {
+        console.log("Save game found. Loading...")
+        if (typeof savedGame.soulEnergy !== "undefined") {
+          this.soulEnergy = savedGame.soulEnergy;
+        }
+        if (typeof savedGame.bones !== "undefined") {
+          this.bones = savedGame.bones;
+        }
+        if (typeof savedGame.stone !== "undefined") {
+          this.stone = savedGame.stone;
+        }
+        if (typeof savedGame.corpses !== "undefined") {
+          this.corpses = savedGame.corpses;
+        }
+        if (typeof savedGame.skeletons !== "undefined") {
+          this.skeletons = savedGame.skeletons;
+        }
+        if (typeof savedGame.crypts !== "undefined") {
+          this.crypts = savedGame.crypts;
+          this.skeletonsCap = this.calcCryptSkeletonCap();
+        }
+        if (typeof savedGame.ossuaries !== "undefined") {
+          this.ossuaries = savedGame.ossuaries;
+          this.bonesCap = this.calcOssuaryBonesCap();
+        }
+        if (typeof savedGame.rockpiles !== "undefined") {
+          this.rockpiles = savedGame.rockpiles;
+          this.stoneCap = this.calcRockpileStonesCap();
+        }
+        if (typeof savedGame.openPits !== "undefined") {
+          this.openPits = savedGame.openPits;
+          this.corpseCap = this.calcOpenPitCorpsesCap();
+        }
+        if (typeof savedGame.skeletonsAssignedToSoulEnergyHarvesting !== "undefined") {
+          this.skeletonsAssignedToSoulEnergyHarvesting = savedGame.skeletonsAssignedToSoulEnergyHarvesting;
+        }
+        if (typeof savedGame.skeletonsAssignedToBoneHarvesting !== "undefined") {
+          this.skeletonsAssignedToBoneHarvesting = savedGame.skeletonsAssignedToBoneHarvesting;
+        }
+        if (typeof savedGame.skeletonsAssignedToStoneHarvesting !== "undefined") {
+          this.skeletonsAssignedToStoneHarvesting = savedGame.skeletonsAssignedToStoneHarvesting;
+        }
+        if (typeof savedGame.skeletonsAssignedToCorpseHarvesting !== "undefined") {
+          this.skeletonsAssignedToCorpseHarvesting = savedGame.skeletonsAssignedToCorpseHarvesting;
+        }
+      }
     },
     deleteSave() {
       var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
