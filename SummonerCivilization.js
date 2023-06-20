@@ -285,15 +285,19 @@ const app = Vue.createApp({
         }
         if (typeof savedGame.crypts !== "undefined") {
           this.crypts = savedGame.crypts;
+          this.skeletonsCap = this.calcCryptSkeletonCap();
         }
         if (typeof savedGame.ossuaries !== "undefined") {
           this.ossuaries = savedGame.ossuaries;
+          this.bonesCap = this.calcOssuaryBonesCap();
         }
         if (typeof savedGame.rockpiles !== "undefined") {
           this.rockpiles = savedGame.rockpiles;
+          this.stoneCap = this.calcRockpileStonesCap();
         }
         if (typeof savedGame.openPits !== "undefined") {
           this.openPits = savedGame.openPits;
+          this.corpseCap = this.calcOpenPitCorpsesCap();
         }
         if (typeof savedGame.skeletonsAssignedToSoulEnergyHarvesting !== "undefined") {
           this.skeletonsAssignedToSoulEnergyHarvesting = savedGame.skeletonsAssignedToSoulEnergyHarvesting;
@@ -308,8 +312,6 @@ const app = Vue.createApp({
           this.skeletonsAssignedToCorpseHarvesting = savedGame.skeletonsAssignedToCorpseHarvesting;
         }
       }
-
-
     },
     deleteSave() {
       var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
