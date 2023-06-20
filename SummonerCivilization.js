@@ -256,7 +256,11 @@ const app = Vue.createApp({
         crypts: this.crypts,
         ossuaries: this.ossuaries,
         rockpiles: this.rockpiles,
-        openPits: this.openPits
+        openPits: this.openPits,
+        skeletonsAssignedToSoulEnergyHarvesting: this.skeletonsAssignedToSoulEnergyHarvesting,
+        skeletonsAssignedToBoneHarvesting: this.skeletonsAssignedToBoneHarvesting,
+        skeletonsAssignedToStoneHarvesting: this.skeletonsAssignedToStoneHarvesting,
+        skeletonsAssignedToCorpseHarvesting: this.skeletonsAssignedToCorpseHarvesting
       }
       localStorage.setItem("save", JSON.stringify(save));
     },
