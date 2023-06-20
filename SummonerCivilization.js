@@ -318,5 +318,16 @@ const app = Vue.createApp({
         localStorage.removeItem("save");
       }
     }
+  },
+  computed: {
+    displayBonesCap() {
+      return this.calcOssuaryBonesCap();
+    },
+    displayStoneCap() {
+      return this.calcRockpileStonesCap();
+    },
+    displayCorpsesCap() {
+      return this.calcBuildOpenPitCost();
+    }
   }
 });
