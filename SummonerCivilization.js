@@ -264,33 +264,38 @@ const app = Vue.createApp({
       console.log("Loading saved game, if it exists...");
       var savedGame = JSON.parse(localStorage.getItem("save"));
 
-      if (typeof savedGame.soulEnergy !== "undefined") {
-        this.soulEnergy = savedGame.soulEnergy;
-      };
-      if (typeof savedGame.bones !== "undefined") {
-        this.bones = savedGame.bones;
-      };
-      if (typeof savedGame.stone !== "undefined") {
-        this.stone = savedGame.stone;
-      };
-      if (typeof savedGame.corpses !== "undefined") {
-        this.corpses = savedGame.corpses;
-      };
-      if (typeof savedGame.skeletons !== "undefined") {
-        this.skeletons = savedGame.skeletons;
-      };
-      if (typeof savedGame.crypts !== "undefined") {
-        this.crypts = savedGame.crypts;
-      };
-      if (typeof savedGame.ossuaries !== "undefined") {
-        this.ossuaries = savedGame.ossuaries;
-      };
-      if (typeof savedGame.rockpiles !== "undefined") {
-        this.rockpiles = savedGame.rockpiles;
-      };
-      if (typeof savedGame.openPits !== "undefined") {
-        this.openPits = savedGame.openPits;
-      };
+      if (savedGame) {
+        console.log("Save game found. Loading...")
+        if (typeof savedGame.soulEnergy !== "undefined") {
+          this.soulEnergy = savedGame.soulEnergy;
+        }
+        if (typeof savedGame.bones !== "undefined") {
+          this.bones = savedGame.bones;
+        }
+        if (typeof savedGame.stone !== "undefined") {
+          this.stone = savedGame.stone;
+        }
+        if (typeof savedGame.corpses !== "undefined") {
+          this.corpses = savedGame.corpses;
+        }
+        if (typeof savedGame.skeletons !== "undefined") {
+          this.skeletons = savedGame.skeletons;
+        }
+        if (typeof savedGame.crypts !== "undefined") {
+          this.crypts = savedGame.crypts;
+        }
+        if (typeof savedGame.ossuaries !== "undefined") {
+          this.ossuaries = savedGame.ossuaries;
+        }
+        if (typeof savedGame.rockpiles !== "undefined") {
+          this.rockpiles = savedGame.rockpiles;
+        }
+        if (typeof savedGame.openPits !== "undefined") {
+          this.openPits = savedGame.openPits;
+        }
+      }
+
+
     },
     deleteSave() {
       var doubleCheck = confirm("Are you sure you want to delete your save? This cannot be undone!");
