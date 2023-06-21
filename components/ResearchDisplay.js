@@ -55,6 +55,9 @@ app.component('research-display', {
             
             <button v-for="(research, index) in available_research"> 
             {{ research.title }} 
+            <div>
+                {{ research.description }}
+            </div>
             </button>
         </ul>
         <div>--------------------------------------------------------------------</div>
