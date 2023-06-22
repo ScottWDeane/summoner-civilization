@@ -87,20 +87,16 @@ app.component('research-display', {
     template:
         /*html*/
         `
-        <div>--------------------------------------------------------------------</div>
-        <div> Research and Upgrades </div>
         <ul>
             <button 
             v-for="(research, index) in available_research" 
             class="tooltip button"> 
-                {{ research.title }} 
+                {{ research.title }}
                 <span 
                 class="tooltiptext" 
                 v-html="createTooltip(research)">
                 </span>
             </button>
         </ul>
-
-<hr>
         `
 })
