@@ -70,17 +70,17 @@ app.component('research-display', {
         <div>--------------------------------------------------------------------</div>
         <div> Research and Upgrades </div>
         <ul>
-            
             <button 
-                v-for="(research, index) in available_research" 
-                class="tooltip button"> 
-                    {{ research.title }} 
+            v-for="(research, index) in available_research" 
+            class="tooltip button"> 
+                {{ research.title }} 
                 <span 
-                    class="tooltiptext" 
-                    v-html="research.description">
+                class="tooltiptext" 
+                v-html="createTooltip(research)">
                 </span>
             </button>
         </ul>
-        <div>--------------------------------------------------------------------</div>
+
+<hr>
         `
 })
