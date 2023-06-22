@@ -36,7 +36,7 @@ app.component('research-display', {
                         'bones': 500,
                         'corpses': 500
                     },
-                    description: 'Draw power from your skeletons and consume the middling life energy of some reagants to empower your staff. <hr> 500% increased maximum Soul Energy cap.',
+                    description: 'Draw power from your skeletons and consume the middling life energy of some reagents to empower your staff. <hr> 500% increased maximum Soul Energy cap.',
                     bonus: 5, // 500% bonus (or, 5x) to maximum soul energy cap
                     requirements: {
                         owned_settlements: 0,
