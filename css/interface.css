@@ -6,6 +6,7 @@ body {
 .button {
     color: white;
     background-color: #40404d;
+    margin: 2px;
 }
 
 .tooltip {
