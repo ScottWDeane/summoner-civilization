@@ -85,7 +85,10 @@
                 stone)</button>
         </div>
 
-        <research-display :soulEnergy="soulEnergy"></research-display>
+        <hr>
+        <research-display :soulEnergy="soulEnergy" :bones="bones" :stone="stone" :corpses="corpses"
+            :skeletons="skeletons" :skeletonsCap="skeletonsCap"></research-display>
+        <hr>
 
         <br>
         <button @click="saveGame">Manual Game Save</button>
