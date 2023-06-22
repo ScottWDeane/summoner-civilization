@@ -6,7 +6,7 @@ app.component('research-display', {
                     id: 'two-hands',
                     title: 'Two Hands',
                     cost: {
-                        'soulEnergy': 100,
+                        'Soul Energy': 100,
                         'bones': 100
                     },
                     description: 'Refine your resurrection spell so that skeletons have both of their hands. Most of the time. <hr> Double all skeleton labor production.',
@@ -19,7 +19,7 @@ app.component('research-display', {
                     id: 'better-supports',
                     title: 'Better Supports',
                     cost: {
-                        'soulEnergy': 100,
+                        'Soul Energy': 100,
                         'stone': 100
                     },
                     description: 'Instruct your skeletons to build walls for the Rock Piles, increasing the amount of rocks that can be stored per pile. <hr> +50% storage capacity for Rock Piles.',
@@ -32,7 +32,7 @@ app.component('research-display', {
                     id: 'lodestone-staff',
                     title: 'Lodestone Staff',
                     cost: {
-                        'soulEnergy': 100,
+                        'Soul Energy': 100,
                         'bones': 500,
                         'corpses': 500
                     },
