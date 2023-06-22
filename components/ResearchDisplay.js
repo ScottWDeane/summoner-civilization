@@ -9,7 +9,7 @@ app.component('research-display', {
                         'Soul Energy': 100,
                         'bones': 100
                     },
-                    description: 'Refine your resurrection spell so that skeletons have both of their hands. Most of the time. <hr> Double all skeleton labor production.',
+                    description: 'Refine your resurrection spell so that skeletons have both of their hands. Most of the time. <hr> Double all skeleton labor production.<hr>',
                     bonus: 2, // double all skeletons' labor
                     requirements: {
                         owned_settlements: 0
@@ -22,7 +22,7 @@ app.component('research-display', {
                         'Soul Energy': 100,
                         'stone': 100
                     },
-                    description: 'Instruct your skeletons to build walls for the Rock Piles, increasing the amount of rocks that can be stored per pile. <hr> +50% storage capacity for Rock Piles.',
+                    description: 'Instruct your skeletons to build walls for the Rock Piles, increasing the amount of rocks that can be stored per pile. <hr> +50% storage capacity for Rock Piles.<hr>',
                     bonus: 1.5, // 50% bonus to rock pile storage capacity
                     requirements: {
                         owned_settlements: 0
@@ -36,7 +36,7 @@ app.component('research-display', {
                         'bones': 500,
                         'corpses': 500
                     },
-                    description: 'Draw power from your skeletons and consume the middling life energy of some reagents to empower your staff. <hr> 500% increased maximum Soul Energy cap.',
+                    description: 'Draw power from your skeletons and consume the middling life energy of some reagents to empower your staff. <hr> 500% increased maximum Soul Energy cap.<hr>',
                     bonus: 5, // 500% bonus (or, 5x) to maximum soul energy cap
                     requirements: {
                         owned_settlements: 0,
