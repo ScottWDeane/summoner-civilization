@@ -43,6 +43,27 @@ app.component('research-display', {
             }
         }
     },
+    methods: {
+        // take in one Research upgrade.
+        // Extract Title, Description, and Cost
+        // build out a string of HTML so the tooltip would render like this:
+        // Ensure your skeletons are resurrected with two hands.
+        // -----------------------------------------------------
+        // Double all Skeleton Labor production.
+        // -----------------------------------------------------
+        // 100 Soul Energy
+        // 100 Bones
+        // 100 Corpses
+        createTooltip(currentResearch) {
+            console.log("Reached createTooltip() function.")
+            var toolTipText = currentResearch.description;
+            // add all the individual cost values
+            for (const [key, value] of Object.entries(currentResearch.cost)) {
+                toolTipText = toolTipText + " " + key + " " + value + "<br>";
+            }
+            return toolTipText;
+        }
+    },
     template:
         /*html*/
         `
