@@ -43,6 +43,26 @@ app.component('research-display', {
             }
         }
     },
+    props: {
+        soulEnergy: {
+            type: String
+        },
+        bones: {
+            type: Number
+        },
+        stone: {
+            type: Number
+        },
+        corpses: {
+            type: Number
+        },
+        skeletons: {
+            type: Number
+        },
+        skeletonsCap: {
+            type: Number
+        }
+    },
     methods: {
         // take in one Research upgrade.
         // Extract Title, Description, and Cost
