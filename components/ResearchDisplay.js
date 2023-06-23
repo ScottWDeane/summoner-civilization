@@ -23,7 +23,7 @@ app.component('research-display', {
         return {
             available_research: {
                 two_hands: {
-                    id: 'two-hands',
+                    id: 1,
                     title: 'Two Hands',
                     cost: {
                         'Soul Energy': 100,
@@ -35,7 +35,7 @@ app.component('research-display', {
                     }
                 },
                 better_supports: {
-                    id: 'better-supports',
+                    id: 2,
                     title: 'Better Supports',
                     cost: {
                         'Soul Energy': 100,
@@ -47,7 +47,7 @@ app.component('research-display', {
                     }
                 },
                 lodestone_staff: {
-                    id: 'lodestone-staff',
+                    id: 3,
                     title: 'Lodestone Staff',
                     cost: {
                         'Soul Energy': 100,
