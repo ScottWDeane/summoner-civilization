@@ -89,7 +89,7 @@ app.component('research-display', {
             // first, check if we can actually afford the upgrade.
             var canAfford = this.canAffordResearch(research.cost);
 
-            // if we can afford the upgrade, emit to the parent the info we want
+            // if we can afford the upgrade, emit to the parent the info parent wants
             if (canAfford) {
                 console.log("We can afford this upgrade.")
                 this.$emit('purchase-research', research.title, research.cost, research.bonus);
