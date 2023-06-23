@@ -41,7 +41,13 @@ const app = Vue.createApp({
       skeletonLaborSoulEnergy: 0,
       skeletonLaborBones: 0,
       skeletonLaborStone: 0,
-      skeletonLaborCorpses: 0
+      skeletonLaborCorpses: 0,
+      // track research
+      two_hands: {
+        id: 1,
+        cost: {},
+        bonus: 1
+      }
     }
   },
   created() {
