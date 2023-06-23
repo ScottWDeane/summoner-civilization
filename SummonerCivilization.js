@@ -319,6 +319,13 @@ const app = Vue.createApp({
         console.log("Deleting game save...");
         localStorage.removeItem("save");
       }
+    },
+    printPurchasedResearch(resTitle, resCost, resBonus) {
+      console.log("title: " + resTitle);
+      for (const [key, value] of Object.entries(resCost)) {
+        console.log(key, value)
+      }
+      console.log("bonus: " + resBonus);
     }
   }
 });

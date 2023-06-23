@@ -82,6 +82,11 @@ app.component('research-display', {
                 toolTipText = toolTipText + " " + key + " " + value + "<br>";
             }
             return toolTipText;
+        },
+        purchaseResearch(research) {
+            this.selectedResearch = research.id;
+            this.$emit('purchase-research', research.title, research.cost, research.bonus);
+            // this.$emit('purchase-research', { id: this.available_research.id, costs: this.available_research.cost })
         }
     },
     template:
