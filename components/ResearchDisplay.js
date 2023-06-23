@@ -91,9 +91,12 @@ app.component('research-display', {
     template:
         /*html*/
         `
-        <ul>
+
+
+        <div class="research-display">
+        <div v-for="(research, index) in available_research" :key="index.id">
             <button 
-            v-for="(research, index) in available_research" 
+            v-on:click="purchaseResearch(research)"
             class="tooltip button"> 
                 {{ research.title }}
                 <span 
@@ -101,6 +104,7 @@ app.component('research-display', {
                 v-html="createTooltip(research)">
                 </span>
             </button>
-        </ul>
+        </div>
+        </div>
         `
 })
