@@ -93,7 +93,7 @@ app.component('research-display', {
             if (canAfford) {
                 console.log("We can afford this upgrade.")
                 research.purchased = true; //TODO: figure out how to add this to the save state
-                this.$emit('purchase-research', research.title, research.cost, research.bonus);
+                this.$emit('purchase-research', research.id, research.cost, research.bonus);
 
             } else if (!canAfford) {
                 console.log("Cannot afford upgrade.")
