@@ -26,8 +26,8 @@ app.component('research-display', {
                     id: 1,
                     title: 'Two Hands',
                     cost: {
-                        'Soul Energy': 100,
-                        'Bones': 100
+                        'Soul Energy': 5,
+                        'Bones': 5
                     },
                     description: 'Refine your resurrection spell so that skeletons have both of their hands. Most of the time. <hr> Double all skeleton labor production.<hr>',
                     bonus: 2, // double all skeletons' labor
@@ -38,8 +38,8 @@ app.component('research-display', {
                     id: 2,
                     title: 'Better Supports',
                     cost: {
-                        'Soul Energy': 100,
-                        'Stone': 100
+                        'Soul Energy': 5,
+                        'Stone': 5
                     },
                     description: 'Instruct your skeletons to build walls for the Rock Piles, increasing the amount of rocks that can be stored per pile. <hr> +50% storage capacity for Rock Piles.<hr>',
                     bonus: 1.5, // 50% bonus to rock pile storage capacity
@@ -50,9 +50,9 @@ app.component('research-display', {
                     id: 3,
                     title: 'Lodestone Staff',
                     cost: {
-                        'Soul Energy': 100,
-                        'Bones': 500,
-                        'Corpses': 500
+                        'Soul Energy': 5,
+                        'Bones': 5,
+                        'Corpses': 5
                     },
                     description: 'Draw power from your skeletons and consume the middling life energy of some reagents to empower your staff. <hr> 500% increased maximum Soul Energy cap.<hr>',
                     bonus: 5, // 500% bonus (or, 5x) to maximum soul energy cap
