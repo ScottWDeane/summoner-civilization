@@ -134,20 +134,18 @@ app.component('research-display', {
     template:
         /*html*/
         `
-
-
         <div class="research-display">
-        <div v-for="(research, index) in available_research" :key="index.id">
-            <button 
-            v-on:click="purchaseResearch(research)"
-            class="tooltip button"> 
-                {{ research.title }}
-                <span 
-                class="tooltiptext" 
-                v-html="createTooltip(research)">
-                </span>
-            </button>
-        </div>
+            <div v-for="(research, index) in available_research" :key="index.id">
+                <button 
+                    v-on:click="$emit('purchaseResearch(research)', $event)"
+                    class="tooltip button"> 
+                        {{ research.title }}
+                        <span 
+                            class="tooltiptext" 
+                            v-html="createTooltip(research)">
+                        </span>
+                </button>
+            </div>
         </div>
         `
 })
