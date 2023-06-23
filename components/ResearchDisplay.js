@@ -92,9 +92,9 @@ app.component('research-display', {
             // if we can afford the upgrade, emit to the parent the info parent wants
             if (canAfford) {
                 console.log("We can afford this upgrade.")
-                this.$emit('purchase-research', research.title, research.cost, research.bonus);
-                // mark the research as "purchased"
                 research.purchased = true; //TODO: figure out how to add this to the save state
+                this.$emit('purchase-research', research.title, research.cost, research.bonus);
+
             } else if (!canAfford) {
                 console.log("Cannot afford upgrade.")
             }
