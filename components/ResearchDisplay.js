@@ -1,4 +1,24 @@
 app.component('research-display', {
+    props: {
+        soulEnergy: {
+            type: String
+        },
+        bones: {
+            type: Number
+        },
+        stone: {
+            type: Number
+        },
+        corpses: {
+            type: Number
+        },
+        skeletons: {
+            type: Number
+        },
+        skeletonsCap: {
+            type: Number
+        }
+    },
     data() {
         return {
             available_research: {
@@ -43,26 +63,6 @@ app.component('research-display', {
             }
         }
     },
-    props: {
-        soulEnergy: {
-            type: String
-        },
-        bones: {
-            type: Number
-        },
-        stone: {
-            type: Number
-        },
-        corpses: {
-            type: Number
-        },
-        skeletons: {
-            type: Number
-        },
-        skeletonsCap: {
-            type: Number
-        }
-    },
     methods: {
         // take in one Research upgrade.
         // Extract Title, Description, and Cost
@@ -75,7 +75,6 @@ app.component('research-display', {
         // 100 Bones
         // 100 Corpses
         createTooltip(currentResearch) {
-            console.log("Reached createTooltip() function.")
             var toolTipText = currentResearch.description;
             // add all the individual cost values
             for (const [key, value] of Object.entries(currentResearch.cost)) {
