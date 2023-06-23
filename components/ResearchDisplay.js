@@ -32,7 +32,8 @@ app.component('research-display', {
                     description: 'Refine your resurrection spell so that skeletons have both of their hands. Most of the time. <hr> Double all skeleton labor production.<hr>',
                     bonus: 2, // double all skeletons' labor
                     requirements: {
-                    }
+                    },
+                    purchased: false
                 },
                 better_supports: {
                     id: 2,
@@ -44,7 +45,8 @@ app.component('research-display', {
                     description: 'Instruct your skeletons to build walls for the Rock Piles, increasing the amount of rocks that can be stored per pile. <hr> +50% storage capacity for Rock Piles.<hr>',
                     bonus: 1.5, // 50% bonus to rock pile storage capacity
                     requirements: {
-                    }
+                    },
+                    purchased: false
                 },
                 lodestone_staff: {
                     id: 3,
@@ -58,7 +60,8 @@ app.component('research-display', {
                     bonus: 5, // 500% bonus (or, 5x) to maximum soul energy cap
                     requirements: {
                         skeletonsCap: 10
-                    }
+                    },
+                    purchased: false
                 }
             }
         }
