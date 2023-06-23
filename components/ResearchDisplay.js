@@ -86,6 +86,36 @@ app.component('research-display', {
             this.selectedResearch = research.id;
             this.$emit('purchase-research', research.title, research.cost, research.bonus);
             // this.$emit('purchase-research', { id: this.available_research.id, costs: this.available_research.cost })
+        },
+        canAffordUpgrade(allResourceCosts) {
+            var enoughResources = false;
+            for (const [key, value] of Object.entries(allResourceCosts)) {
+                if (key == "Soul Energy" && this.soulEnergy >= value) {
+                    enoughResources = true;
+                } else if (key == "Soul Energy" && this.soulEnergy < value) {
+                    enoughResources = false;
+                    break;
+                }
+                if (key == "Bones" && this.bones >= value) {
+                    enoughResources = true;
+                } else if (key == "Bones" && this.bones < value) {
+                    enoughResources = false;
+                    break;
+                }
+                if (key == "Stone" && this.stone >= value) {
+                    enoughResources = true;
+                } else if (key == "Stone" && this.stone < value) {
+                    enoughResources = false;
+                    break;
+                }
+                if (key == "Corpses" && this.corpses >= value) {
+                    enoughResources = true;
+                } else if (key == "Corpses" && this.corpses < value) {
+                    enoughResources = false;
+                    break;
+                }
+            }
+            return enoughResources ? true : false;
         }
     },
     template:
