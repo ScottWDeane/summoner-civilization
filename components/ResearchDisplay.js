@@ -93,9 +93,7 @@ app.component('research-display', {
             } else if (!canAfford) {
                 console.log("Cannot afford upgrade.")
             }
-            // this.$emit('purchase-research', research.title, research.cost, research.bonus);
-            // else, don't do anything.
-            // this.$emit('purchase-research', { id: this.available_research.id, costs: this.available_research.cost })
+
         },
         canAffordResearch(allResourceCosts) {
             var enoughResources = false;
