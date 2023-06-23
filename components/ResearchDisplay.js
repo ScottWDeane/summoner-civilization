@@ -83,11 +83,21 @@ app.component('research-display', {
             return toolTipText;
         },
         purchaseResearch(research) {
-            this.selectedResearch = research.id;
-            this.$emit('purchase-research', research.title, research.cost, research.bonus);
+            // first, check if we can actually afford the upgrade.
+            var canAfford = this.canAffordResearch(research.cost);
+
+            // if we can afford the upgrade, emit to the parent the info we want
+            if (canAfford) {
+                console.log("We can afford this upgrade.")
+                this.$emit('purchase-research', research.title, research.cost, research.bonus);
+            } else if (!canAfford) {
+                console.log("Cannot afford upgrade.")
+            }
+            // this.$emit('purchase-research', research.title, research.cost, research.bonus);
+            // else, don't do anything.
             // this.$emit('purchase-research', { id: this.available_research.id, costs: this.available_research.cost })
         },
-        canAffordUpgrade(allResourceCosts) {
+        canAffordResearch(allResourceCosts) {
             var enoughResources = false;
             for (const [key, value] of Object.entries(allResourceCosts)) {
                 if (key == "Soul Energy" && this.soulEnergy >= value) {
