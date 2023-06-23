@@ -326,12 +326,11 @@ const app = Vue.createApp({
         localStorage.removeItem("save");
       }
     },
-    printPurchasedResearch(resTitle, resCost, resBonus) {
-      console.log("title: " + resTitle);
-      for (const [key, value] of Object.entries(resCost)) {
-        console.log(key, value)
+    printPurchasedResearch(researchID, researchCost, resourceBonus) {
+      if (researchID == 1) {
+        this.two_hands.cost = researchCost;
+        this.two_hands.bonus = resourceBonus;
       }
-      console.log("bonus: " + resBonus);
     }
   }
 });
